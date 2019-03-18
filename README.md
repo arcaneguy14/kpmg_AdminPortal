@@ -1,14 +1,27 @@
 # Project Title
 KPMG Admin Portal - Web
 
-#Setup Node Module
- # use cd command to AdminPortal / CoreUI/Vue
- # [install all project dependency type] npm install
- # [to start project server for AdminPortal / CoreUI/Vue] npm run serve
- 
- #To build project
- - npm run build
- 
+# Setup & Run
+``` bash
+Setup Node Module
+# direct to AdminPortal or CoreUi directory
+$ cd AdminPortal
+# or
+$ cd CoreUI-Vue
+# install all vuejs depency
+$ npm install
+
+# to Start Server
+$ npm run serve
+#To build project
+$ npm run build
+
+```
+
+
+``` bash
+
+```
 
 # Web Strucutre
 ```
