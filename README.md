@@ -11,6 +11,7 @@ KPMG Admin Portal - Web
  
 
 # Web Strucutre
+```
     /AdminPortal
 ├── public/              # pure static assets (directly copied)
 │   └── index.html           # index.html template
@@ -35,3 +36,4 @@ KPMG Admin Portal - Web
 ├── vue.config.js        # vue-cli config
 ├── LICENSE
 └── package.json         # build scripts and dependencies
+```
