@@ -2,9 +2,9 @@
 KPMG Admin Portal - Web
 
 #Setup Node Module
- 1 - use cd command to AdminPortal / CoreUI/Vue
- 2 - [install all project dependency type] npm install
- 3 - [to start project server for AdminPortal / CoreUI/Vue] npm run serve
+ # use cd command to AdminPortal / CoreUI/Vue
+ # [install all project dependency type] npm install
+ # [to start project server for AdminPortal / CoreUI/Vue] npm run serve
  
  #To build project
  - npm run build
