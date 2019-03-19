@@ -2,6 +2,21 @@ export default {
   items: [
     {
       title: true,
+      name: 'Switch Mode',
+      class: '',
+      wrapper: {
+        element: '',
+        attributes: {}
+      }
+    },
+    {
+      name : 'Switch to Event Mode',
+      url: '/event',
+      class: 'small',
+      icon: 'fa fa-arrow-left'
+    },
+    {
+      title: true,
       name: 'Base',
       class: '',
       wrapper: {
@@ -11,7 +26,7 @@ export default {
     },
     {
       name : 'User Management',
-      url: '/main/users',
+      url: '/kpmg/users',
       icon : 'fa fa-users'
     },
     {
@@ -25,64 +40,45 @@ export default {
     },
     {
       name : 'Features',
-      url: '/main/features',
+      url: '/kpmg/features',
       icon : 'cui-layers'
     },
     {
       name : 'Insights',
-      url: '/main/insights',
+      url: '/kpmg/insights',
       icon : 'cui-layers'
     },
     {
       name : 'Services',
-      url: '/main/services',
+      url: '/kpmg/services',
       icon : 'cui-layers'
     },
     {
       name : 'Industries',
-      url: '/main/industries',
+      url: '/kpmg/industries',
       icon : 'cui-layers'
     },
     {
       name : 'About',
-      url: '/main/abouts',
+      url: '/kpmg/abouts',
       icon : 'cui-layers'
     },
     {
       name : 'Career',
-      url: '/main/career',
+      url: '/kpmg/career',
       icon : 'cui-layers',
       children: [
         {
           name: 'Career Articles',
-          url: '/main/career/career_articales',
+          url: '/kpmg/career/career_articales',
           icon: 'icon-puzzle'
         },
         {
           name: 'Career Jobs',
-          url: '/main/career/career_jobs',
+          url: '/kpmg/career/career_jobs',
           icon: 'icon-puzzle'
         }
       ]
-    },
-    {
-      title: true,
-      name: 'Event APP',
-      class: '',
-      wrapper: {
-        element: '',
-        attributes: {}
-      }
-    },
-    {
-      name : 'Event',
-      url: '/main/events',
-      icon : 'cui-layers'
-    },
-    {
-      name : 'Event Feeds',
-      url: '/main/events_feeds',
-      icon : 'cui-layers'
-    },
+    }
   ]
 }

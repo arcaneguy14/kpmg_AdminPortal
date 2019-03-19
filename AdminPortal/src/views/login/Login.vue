@@ -45,7 +45,7 @@ export default {
   name: 'Login',
   methods: {
     userLogin(){
-    this.$router.replace({ name: "Home" });
+    this.$router.replace({ name: "Kpmg Home" });
     }
   }
 }

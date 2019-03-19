@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // Containers
-const DefaultContainer = () => import('@/containers/DefaultContainer')
+const kpmgContainer = () => import('@/containers/kpmgContainer')
+const eventContainer = () => import('@/containers/eventContainer')
 
 // Views - Main Login
 const Login = () => import('@/views/login/Login')
@@ -23,15 +24,23 @@ export default new Router({
       component: Login
     },
     {
-      path: '/main',
-      name: 'Home',
-      component: DefaultContainer,
+      path: '/kpmg',
+      name: 'Kpmg Mode Home',
+      component: kpmgContainer,
       children: [
         {
           path: 'users',
           name: 'Users',
           component: UsersMain
         }
+      ]
+    },
+    {
+      path: '/event',
+      name: 'Event Mode Home',
+      component: eventContainer,
+      children: [
+
       ]
     }
   ]
