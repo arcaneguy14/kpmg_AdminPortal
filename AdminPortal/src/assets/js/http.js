@@ -1,8 +1,22 @@
-const hostname = 'http://dev-api.gogogo.my/';
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
-export const $httpaxios = function(uri, method, data){
+Vue.use(VueAxios,axios);
+
+export default {
+    install(Vue, options) {
+        console.log('Installing the CommentsOverlay plugin!');
+        Vue.prototype.$callhttp = (method, uri, data) => callAxios(method, uri, data);
+    }
+
+};
+
+const hostname = 'http://52.220.58.241:21001';
+
+const callAxios = function(method, uri, data){  
     let url = hostname + uri;
-    var header = formatHeader();
+    axios.defaults.headers.common['Authorization'] = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJBY2Nlc3MgVG9rZW4iLCJhdWQiOiJkMzk0MGZlMjIxMjRlNjRjODAxMTg2Yjg2MTI3YzdjYiIsInByaXZpbGVnZXMiOiIxLDUsNiIsImlzcyI6IlByb3ZlbiBFcXVpdHkgU2RuLiBCaGQuIiwiZXhwIjoxNTUyOTAzNTgzLCJ1c2VyaWQiOiIxNTIwIiwiaWF0IjoxNTUyODk5OTgzLCJ1c2VybmFtZSI6ImNodW55b25nQGdvZ29nby5teSJ9.StYpNGzOIY9wVwiF2I0rFywrugM47nFbhdlpxGsSVNSCdi8_2xDcq8I36xk7aum-j93kTKpqjwsndic4jU2zMpIT_hKSAingUS2Bix_5Y5n0nptKRZlw7Il0CtF6knyhT6hX9wGr_XDBjiQv5-ivpadrjXF-ZIfz5Xf15Kr2YKQd_Ejba91xIPffpGDUvl4exLcrGuAFPow3rf69v0nSj-e3EQ6Fx-s9XaX1Hxn9OT7av-bd5EH3ck1e99OChYViaGmjACH7U-6S7HIllYfuRLSZxiH_npVc7xls9us9iY5gdr9Twh7S79PupMu-nVkrthAseGjkhmaJb2g083E7Ig';
     return new Promise(function(resolve, reject){
         switch (method.toUpperCase()) {
             case 'POST':
@@ -18,7 +32,7 @@ export const $httpaxios = function(uri, method, data){
                 break;
             case 'GET':
                 //using axios get method
-                this.axios.get(url)
+                axios.get(url)
                     .then((response)=>{
                         resolve(response.data);
                 })
@@ -54,23 +68,3 @@ export const $httpaxios = function(uri, method, data){
         }
     });
   };
-
-  function formatHeader(){
-      let header = {
-          'User-Agent' : navigator.userAgent,
-          'Accept' : 'application/json',
-          'Accept-Encoding' : 'gzip',
-          'X-Server-TimeStamp' : getDate(),
-          'Authorization' : 'Bearer '
-      }
-      return header;
-  }
-
-  function getDate(){
-    var curdate = new Date();
-    return curdate.getFullYear() + (curdate.getMonth()+1).padStart(2, '0') + (curdate.getDate()).padStart(2, '0') + (curdate.getHours()).padStart(2, '0') + (curdate.getMinutes()).padStart(2, '0') + (curdate.getSeconds()).padStart(2, '0');
-  }
-
-  export default {
-      name : $httpaxios
-  }

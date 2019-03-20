@@ -1,3 +1,5 @@
 
 AdminPortal/.DS_Store
 .DS_Store
+AdminPortal/node_modules
+CoreUI-Vue/node_modules
