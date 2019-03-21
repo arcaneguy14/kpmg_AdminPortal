@@ -41,7 +41,7 @@ export const wsutil = new Vuex.Store({
             //Call refresh token api to get new token
             let rfhRq = {"data" : [{"rfh" : state.rfhToken}]};
             return new Promise((resolve, reject) => {
-                axios.post(state.apiBaseUrl + '/api/v2/refreshToken', JSON.stringify(rfhRq))
+                axios.post(context.apiBaseUrl + '/api/v2/refreshToken', JSON.stringify(rfhRq))
                 .then(response => {
                     if (response.data.respcode == '0'){
                         //Store new token and call again the api
@@ -64,7 +64,7 @@ export const wsutil = new Vuex.Store({
         userLogin(context){
             let rq = {"data": [{"user": "awangtruckcoffee@gmail.com","password": "123456", "fb_token": "", "google_token": ""}]};
             return new Promise((resolve, reject) => {
-                axios.post(wsutil.state.apiBaseUrl + '/api/v2/makeUserLogin', JSON.stringify(rq))
+                axios.post(context.state.apiBaseUrl + '/api/v2/makeUserLogin', JSON.stringify(rq))
                 .then(response => {
                     if (response.data.respcode == '0'){
                         //Store new token and call again the api
@@ -87,8 +87,9 @@ export const wsutil = new Vuex.Store({
             
         },
         getUser(context){
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.jwtToken
             return new Promise((resolve, reject) => {
-                axios.get(wsutil.state.apiBaseUrl + '/api/v2/getUsers?limit=10')
+                axios.get(context.state.apiBaseUrl + '/api/v2/getUsers?limit=10')
                 .then(response => {
                     resolve(response.data);
                 })
