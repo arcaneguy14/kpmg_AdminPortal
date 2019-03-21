@@ -25,6 +25,11 @@ export default {
       }
     },
     {
+      name : 'Dashboard',
+      url: '/kpmg/dashboard',
+      icon : 'fa fa-users'
+    },
+    {
       name : 'User Management',
       url: '/kpmg/users',
       icon : 'fa fa-users'

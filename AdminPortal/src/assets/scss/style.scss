@@ -6,6 +6,22 @@
 
 // If you want to add something do it here
 @import "custom";
+.btn-primary, .sidebar{background-color: color("kpmgblue")};
+.btn-primary:hover, .sidebar .nav-item .nav-link:hover{background-color: color("kpmghoverblue") !important;};
+.nav-link.active{background-color: color("kpmghoverblue") !important;};
 
+h1{
+  color: color("kpmgblue");
+}
+
+.footer-logo{
+  object-fit: contain;
+}
+
+.form-error {
+  font-size: 12px;
+  color: #a94442;
+  font-style: italic;
+}
 // ie fixes
 @import "ie-fix";

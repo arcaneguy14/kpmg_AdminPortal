@@ -9,8 +9,10 @@ import BootstrapVue from 'bootstrap-vue'
 import {wsutil} from './assets/js/wsutil.js'
 import App from './App'
 import router from './router'
+import VeeValidate from 'vee-validate'
 
 Vue.use(BootstrapVue)
+Vue.use(VeeValidate)
 
 new Vue({
   el: '#app',
@@ -18,6 +20,6 @@ new Vue({
   store : wsutil,
   template: '<App/>',
   components: {
-    App
+    App,
   }
 })

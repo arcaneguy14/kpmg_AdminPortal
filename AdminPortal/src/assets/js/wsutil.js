@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import router from 'vue-router'
+Vue.use(router)
+
 
 Vue.use(Vuex);
 
@@ -11,17 +14,22 @@ export const wsutil = new Vuex.Store({
         apiBaseUrl : "https://dev-api.gogogo.my",
         curAct : "",
         temp: "",
-        userProfile : {}
+        userProfile : {},
+        tableRow: []
     },
     getters : {
         getJwt : state =>{
             return state.jwtToken;
-        }
+        },
+
+      projects (state) {
+        return state.tableRow
+      }
     },
     mutations : {
         storeToken(state, token){
             //store new jwt and refresh token
-            localStorage.setItem("jwtToken", token.jwt);            
+            localStorage.setItem("jwtToken", token.jwt);
             localStorage.setItem("rfhToken", token.rfh);
             state.jwtToken = token.jwt;
             state.rfhToken = token.rfh;
@@ -33,8 +41,12 @@ export const wsutil = new Vuex.Store({
             state.rfhToken = null;
         },
         storeProfile(state){
-            
-        }
+
+        },
+
+      projects (state, tableRow) {
+        state.tableRow = tableRow
+      }
     },
     actions : {
         refreshJWT({ dispatch, commit, state }) {
@@ -58,11 +70,11 @@ export const wsutil = new Vuex.Store({
             });
         },
         userLogout(context){
-            this.$router.replace({ name: "Login" });
+            //this.$router.replace({ name: "Login" });
             context.commit('clearToken');
         },
-        userLogin(context){
-            let rq = {"data": [{"user": "awangtruckcoffee@gmail.com","password": "123456", "fb_token": "", "google_token": ""}]};
+        userLogin(context, credentials){
+            let rq = {"data": [{"user": credentials.username,"password": credentials.password, "fb_token": "", "google_token": ""}]};
             return new Promise((resolve, reject) => {
                 axios.post(wsutil.state.apiBaseUrl + '/api/v2/makeUserLogin', JSON.stringify(rq))
                 .then(response => {
@@ -84,7 +96,7 @@ export const wsutil = new Vuex.Store({
             return new Promise((resolve, reject) => {
                 axios.get("http://52.220.58.241:21001/api/v2/getBrandsAll", '{}').then(response => resolve(response.data));
             });
-            
+
         },
         getUser(context){
             return new Promise((resolve, reject) => {
@@ -96,7 +108,7 @@ export const wsutil = new Vuex.Store({
                     reject(error);
                 });
             });
-        }
+        },
     }
 });
 
@@ -108,10 +120,10 @@ wsutil.subscribeAction((action, state) => {
     state.temp = action.type;
 });
 
-// Add jwt token if token in state in available 
+// Add jwt token if token in state in available
 axios.interceptors.request.use((setting) => {
     if (wsutil.state.jwtToken != null){
-        setting.headers['Authorization'] = 'Bearer ' + wsutil.state.jwtToken;    
+        setting.headers['Authorization'] = 'Bearer ' + wsutil.state.jwtToken;
     }
     return setting;
 });
@@ -144,5 +156,5 @@ axios.interceptors.response.use((response) => {
     else{
         return response;
     }
-    
+
 });
