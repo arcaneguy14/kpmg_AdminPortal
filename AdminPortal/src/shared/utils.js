@@ -1,5 +1,5 @@
-import { resolve } from "dns";
-import { reject } from "q";
+//import { resolve } from "dns";
+//import { reject } from "q";
 
 export function random (min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)

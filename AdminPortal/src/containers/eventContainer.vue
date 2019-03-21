@@ -3,8 +3,8 @@
     <AppHeader fixed>
       <SidebarToggler class="d-lg-none" display="md" mobile />
       <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="img/logo.png" width="110" height="65" alt="KPMG Logo">
-        <img class="navbar-brand-minimized" src="img/logo.png" width="70" height="60" alt="KPMG Logo">
+        <img class="navbar-brand-full" src="img/logo.svg" width="110" height="65" alt="KPMG Logo">
+        <img class="navbar-brand-minimized" src="img/logo.svg" width="70" height="60" alt="KPMG Logo">
       </a>
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-navbar-nav class=" ml-auto">
@@ -17,7 +17,6 @@
         <SidebarForm/>
         <SidebarNav :navItems="nav"></SidebarNav>
         <SidebarFooter/>
-        <SidebarMinimizer/>
       </AppSidebar>
       <main class="main">
         <Breadcrumb :list="list"/>
@@ -33,7 +32,7 @@
     <TheFooter>
       <!--footer-->
       <div class="ml-auto">
-        <a href="#"><img src="img/sage.jpeg" width="60" height="25" alt="SAGE42 Logo"/> </a>
+        <a href="#"><img src="img/sage.jpeg" class="footer-logo" width="60" height="25" alt="SAGE42 Logo"/> </a>
         <span class="ml-1">&copy; 2019 Sage42 </span>
       </div>
     </TheFooter>

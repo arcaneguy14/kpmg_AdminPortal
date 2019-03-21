@@ -11,7 +11,7 @@ export default {
     },
     {
       name : 'Switch to KPMG Mode',
-      url: '/kpmg',
+      url: '/kpmg/dashboard',
       class: 'small',
       icon: 'fa fa-arrow-left'
     },
