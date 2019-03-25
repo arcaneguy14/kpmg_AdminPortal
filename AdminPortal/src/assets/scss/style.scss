@@ -7,8 +7,19 @@
 // If you want to add something do it here
 @import "custom";
 .btn-primary, .sidebar{background-color: color("kpmgblue")};
-.btn-primary:hover, .sidebar .nav-item .nav-link:hover{background-color: color("kpmghoverblue") !important;};
+.btn-primary:hover, .btn-outline-primary:hover, .sidebar .nav-item .nav-link:hover{background-color: color("kpmghoverblue") !important;};
 .nav-link.active{background-color: color("kpmghoverblue") !important;};
+
+.btn-outline-primary {
+  color: color("kpmgblue");
+  border-color: color("kpmgblue");
+}
+
+.btn-outline-primary:disabled{
+  color: grey;
+  border-color: grey;
+  background-color: unset !important;
+}
 
 h1{
   color: color("kpmgblue");
@@ -22,6 +33,19 @@ h1{
   font-size: 12px;
   color: #a94442;
   font-style: italic;
+}
+
+.custom-control-label{
+  cursor: pointer;
+}
+
+.modal-header{
+  background-color: color('kpmgblue');
+  color: white;
+
+  .close{
+    color: white;
+  }
 }
 // ie fixes
 @import "ie-fix";

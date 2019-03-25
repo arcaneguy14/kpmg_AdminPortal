@@ -15,7 +15,8 @@ export const wsutil = new Vuex.Store({
         curAct : "",
         temp: "",
         userProfile : {},
-        tableRow: []
+        tableRow: [],
+        users: []
     },
     getters : {
         getJwt : state =>{
@@ -24,29 +25,37 @@ export const wsutil = new Vuex.Store({
 
       projects (state) {
         return state.tableRow
+      },
+
+      getUsers (state) {
+        return state.users
       }
     },
     mutations : {
-        storeToken(state, token){
-            //store new jwt and refresh token
-            localStorage.setItem("jwtToken", token.jwt);
-            localStorage.setItem("rfhToken", token.rfh);
-            state.jwtToken = token.jwt;
-            state.rfhToken = token.rfh;
-        },
-        clearToken(state){
-            localStorage.removeItem("jwtToken");
-            localStorage.removeItem("rfhToken");
-            state.jwtToken = null;
-            state.rfhToken = null;
-        },
-        storeProfile(state){
+      storeToken(state, token) {
+        //store new jwt and refresh token
+        localStorage.setItem("jwtToken", token.jwt);
+        localStorage.setItem("rfhToken", token.rfh);
+        state.jwtToken = token.jwt;
+        state.rfhToken = token.rfh;
+      },
+      clearToken(state) {
+        localStorage.removeItem("jwtToken");
+        localStorage.removeItem("rfhToken");
+        state.jwtToken = null;
+        state.rfhToken = null;
+      },
+      storeProfile(state) {
 
-        },
+      },
 
-      projects (state, tableRow) {
+      projects(state, tableRow) {
         state.tableRow = tableRow
-      }
+      },
+
+      getUser(state, users) {
+        state.users = users
+      },
     },
     actions : {
         refreshJWT({ dispatch, commit, state }) {
@@ -98,10 +107,23 @@ export const wsutil = new Vuex.Store({
             });
 
         },
-        getUser(context){
+        getUser(context, user){
             return new Promise((resolve, reject) => {
-                axios.get(wsutil.state.apiBaseUrl + '/api/v2/getUsers?limit=10')
+              let userUrl = ''
+
+              if(user.nextPage != null)
+              {
+                userUrl += user.nextPage
+              }
+
+              else{
+                userUrl = '/api/v2/getUsers?limit=10'
+              }
+
+              console.log(user.nextPage)
+                axios.get(wsutil.state.apiBaseUrl + userUrl)
                 .then(response => {
+                  context.commit('getUser', response);
                     resolve(response.data);
                 })
                 .catch(function(error){

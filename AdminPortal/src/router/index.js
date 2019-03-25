@@ -53,6 +53,7 @@ export default new Router({
     {
       path: '/kpmg',
       name: 'Kpmg Mode Home',
+      redirect: '/kpmg/dashboard',
       beforeEnter: guard, // Using guard before entering the route
       component: kpmgContainer,
       children: [
