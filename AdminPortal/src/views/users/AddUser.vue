@@ -59,27 +59,10 @@
 
 
     <b-form-group id="exampleGroup4" label="Gender:">
-      <b-form-checkbox-group v-model="form.checked" id="exampleChecks">
-        <b-form-checkbox value="m">Male</b-form-checkbox>
-        <b-form-checkbox value="f">Female</b-form-checkbox>
-      </b-form-checkbox-group>
-    </b-form-group>
-
-    <b-form-group id="genPwd" label="" label-for="genPass">
-      <b-row>
-        <b-col>
-          <b-form-input
-            id="genPass"
-            type="text"
-            v-model="form.pwd"
-            required
-            placeholder="" />
-        </b-col>
-
-        <b-col>
-          <b-button type="button" @click="genUserPass" variant="primary">Generate Password</b-button>
-        </b-col>
-      </b-row>
+      <b-form-radio-group v-model="form.checked" id="exampleChecks">
+        <b-form-radio value="m">Male</b-form-radio>
+        <b-form-radio value="f">Female</b-form-radio>
+      </b-form-radio-group>
     </b-form-group>
 
     <b-button type="submit" variant="primary" class="mr-1">Submit</b-button>
@@ -90,9 +73,10 @@
 <script>
     import BRow from "bootstrap-vue/src/components/layout/row";
     import BCol from "bootstrap-vue/src/components/layout/col";
+    import BFormRadio from "bootstrap-vue/src/components/form-radio/form-radio";
     export default {
         name: "AddUser",
-      components: {BCol, BRow},
+      components: {BFormRadio, BCol, BRow},
       data() {
           return {
             form: {
@@ -119,7 +103,9 @@
           /* Reset our form values */
           this.form.email = ''
           this.form.name = ''
-          this.form.food = null
+          this.form.address = ''
+          this.form.pwd = ''
+          this.form.country = null
           this.form.checked = []
           /* Trick to reset/clear native browser form validation state */
           this.show = false
@@ -131,6 +117,21 @@
         genUserPass(para){
           var comb = para + new Date().getTime();
           this.form.pwd = btoa(comb);
+        },
+
+        showAlert(){
+          // Use sweetalert2
+          this.$swal({
+            title: 'Generate Password',
+            text: "Are you sure you want to generate a temporary user password?",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, generate!'
+          }).then((result) => {
+            if (result) {
+              this.genUserPass(1)
+            }
+          })
         }
       }
     }

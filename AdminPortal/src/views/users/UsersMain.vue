@@ -5,7 +5,7 @@
         <b-card>
           <b-row>
             <b-col md="6" class="my-1">
-              <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
+              <b-form-group class="mb-0">
                 <b-input-group>
                   <b-form-input v-model="filter" placeholder="Type to Search" />
                   <b-input-group-append>
@@ -14,41 +14,12 @@
                 </b-input-group>
               </b-form-group>
             </b-col>
-
-            <b-col md="6" class="my-1">
-              <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
-                <b-input-group>
-                  <b-form-select v-model="sortBy" :options="sortOptions">
-                    <option slot="first" :value="null">-- none --</option>
-                  </b-form-select>
-                  <b-form-select :disabled="!sortBy" v-model="sortDesc" slot="append">
-                    <option :value="false">Asc</option> <option :value="true">Desc</option>
-                  </b-form-select>
-                </b-input-group>
-              </b-form-group>
-            </b-col>
-
-            <b-col md="6" class="my-1">
-              <b-form-group label-cols-sm="3" label="Sort direction" class="mb-0">
-                <b-input-group>
-                  <b-form-select v-model="sortDirection" slot="append">
-                    <option value="asc">Asc</option> <option value="desc">Desc</option>
-                    <option value="last">Last</option>
-                  </b-form-select>
-                </b-input-group>
-              </b-form-group>
-            </b-col>
-
-            <b-col md="6" class="my-1">
-              <b-form-group label-cols-sm="3" label="Per page" class="mb-0">
-                <b-form-select :options="pageOptions" v-model="perPage" />
-              </b-form-group>
+            <b-col md="6" class="my-1 d-flex justify-content-end">
+              <b-button variant="primary" @click="add($event.target)"><i class="fa fa-user"></i> Add User</b-button>
             </b-col>
           </b-row>
 
           <!-- Main table element -->
-          <b-button variant="primary" @click="add($event.target)">Add User</b-button>
-
           <div class="spinner-container" v-if="loading">
             <HollowDotsSpinner
               :animation-duration="1000"
@@ -72,16 +43,21 @@
             class="mt-3"
           >
 
-            <template slot="isActive" slot-scope="row">
-              {{ row.value ? 'Yes :)' : 'No :(' }}
+            <template slot="social" slot-scope="row">
+              <span class="table-fa">
+                <i class="fa fa-facebook-square"></i>
+                <i class="fa fa-google"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-linkedin-square"></i>
+              </span>
             </template>
 
             <template slot="actions" slot-scope="row">
-              <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
-                Info modal
+              <b-button size="sm" variant="success" @click="info(row.item, row.index, $event.target)" class="mr-1">
+               <i class="fa fa-edit"></i> Edit User
               </b-button>
-              <b-button size="sm" @click="row.toggleDetails">
-                {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+              <b-button size="sm" variant="danger" @click="delAlert" class="mr-1">
+                <i class="fa fa-trash"></i> Remove User
               </b-button>
             </template>
 
@@ -96,21 +72,22 @@
 
           <b-row>
             <b-col md="6" class="my-1">
-              <b-button class="mr-2" variant="outline-primary" :disabled="clickable" v-on:click="prevButton">Previous</b-button>
-              <b-button variant="outline-primary" v-on:click="nextButton">Next</b-button>
+              <b-button class="mr-2" variant="outline-primary" :disabled="clickable" v-on:click="prevButton"><i class="fa fa-arrow-left"></i> Previous</b-button>
+              <b-button variant="outline-primary" v-on:click="nextButton">Next <i class="fa fa-arrow-right"></i></b-button>
             </b-col>
           </b-row>
         </b-card>
       </transition>
     </b-col>
+    <!--
     <b-col cols="12">
       <b-card>
         <vue-editor ></vue-editor>
       </b-card>
     </b-col>
-
+    -->
     <!-- Info modal -->
-    <b-modal id="modalInfo" @hide="resetModal" :title="modalInfo.title" ok-only>
+    <b-modal id="modalInfo" size="lg" @hide="resetModal" title="Edit User" hide-footer>
       <!-- <pre>{{ modalInfo.content }}</pre> -->
       <edit-user :modalInfo="modalInfo"></edit-user>
     </b-modal>
@@ -127,11 +104,13 @@ import { VueEditor } from 'vue2-quill-editor';
 import AddUser from './AddUser'
 import  EditUser from './EditUser'
 import {HollowDotsSpinner  } from 'epic-spinners'
+import BCol from "bootstrap-vue/src/components/layout/col";
 
 let items = []
 
 export default {
   components: {
+    BCol,
       VueEditor,
       'add-user': AddUser,
       'edit-user': EditUser,
@@ -143,11 +122,11 @@ export default {
       items: [],
       fields: [
         { key: 'id', label: 'id', sortable: true, sortDirection: 'desc' },
-        { key: 'name', label: 'name', class: 'text-center' },
-        { key: 'email', label: 'email' },
-        { key: 'actions', label: 'Actions' },
+        { key: 'name', label: 'name', sortable: true, sortDirection: 'desc' },
+        { key: 'email', label: 'email', sortable: true, sortDirection: 'desc' },
         { key: 'created_at', label: 'Created At' },
-        { key: 'isActive', label: 'isActive' }
+        { key: 'social', label: 'Social Media' },
+        { key: 'actions', label: 'Actions' }
 
       ],
       currentPage: 1,
@@ -161,7 +140,7 @@ export default {
       sortDesc: false,
       sortDirection: 'asc',
       filter: null,
-      modalInfo: { title: '', content: '' },
+      modalInfo: { title: '', content: '', name: '' },
       loading: false,
       flag: 0
     }
@@ -249,6 +228,23 @@ export default {
       this.pagination.from = data.from;
       this.pagination.to = data.to;
     },
+
+    delAlert(){
+      this.$swal({
+        title: 'User Removal',
+        text: "Are you sure you want to remove this user?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, please!'
+      }).then((result) => {
+        if (result){
+          this.$swal({
+            type : 'success',
+            title : 'User Removed!'
+          })
+        }
+      })
+    }
   },
 }
 </script>

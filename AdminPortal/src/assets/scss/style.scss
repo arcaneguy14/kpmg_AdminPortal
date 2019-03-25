@@ -47,5 +47,13 @@ h1{
     color: white;
   }
 }
+
+.table-fa{
+  .fa{
+    font-size: 22px;
+    padding-right: 5px;
+    cursor: pointer;
+  }
+}
 // ie fixes
 @import "ie-fix";

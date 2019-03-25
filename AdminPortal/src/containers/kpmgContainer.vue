@@ -146,4 +146,29 @@ export default {
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .swal2-container {
+    z-index: 9999;
+  }
+
+  .card-button{
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    .card-button-icon{
+      text-align: center;
+      font-size: 50px;
+      color: $kpmgblue;
+    }
+
+    .card-button-icon:hover{
+      color: $kpmghoverblue;
+    }
+  }
+
+  .card-button:hover {
+    border: 3px solid $kpmghoverblue;
+    transform: scale(1.1);
+    transition: all .2s ease-in-out;
+  }
 </style>
