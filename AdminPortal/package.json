@@ -31,7 +31,7 @@
     "perfect-scrollbar": "^1.4.0",
     "simple-line-icons": "^2.4.1",
     "vee-validate": "^2.2.0",
-    "vue": "^2.6.9",
+    "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
     "vue-chartjs": "^3.4.2",
     "vue-perfect-scrollbar": "^0.1.0",
@@ -53,7 +53,7 @@
     "https-proxy-agent": "^2.2.1",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.9"
+    "vue-template-compiler": "^2.6.10"
   },
   "browserslist": [
     "> 1%",
