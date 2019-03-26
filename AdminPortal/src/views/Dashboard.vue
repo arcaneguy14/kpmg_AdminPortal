@@ -234,26 +234,7 @@
     }
   }
 
-  .card-button{
-    cursor: pointer;
-    transition: all .2s ease-in-out;
 
-    .card-button-icon{
-      text-align: center;
-      font-size: 50px;
-      color: $kpmgblue;
-    }
-
-    .card-button-icon:hover{
-      color: $kpmghoverblue;
-    }
-  }
-
-  .card-button:hover {
-    border: 3px solid $kpmghoverblue;
-    transform: scale(1.1);
-    transition: all .2s ease-in-out;
-  }
 
   .event-loc {
     img{

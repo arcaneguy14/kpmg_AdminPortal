@@ -10,9 +10,18 @@ import {wsutil} from './assets/js/wsutil.js'
 import App from './App'
 import router from './router'
 import VeeValidate from 'vee-validate'
+import VueSweetalert2 from 'vue-sweetalert2';
 
 Vue.use(BootstrapVue)
 Vue.use(VeeValidate)
+
+
+const options = {
+  confirmButtonColor: '#00519A',
+  cancelButtonColor: '#ff7674'
+}
+
+Vue.use(VueSweetalert2, options)
 
 new Vue({
   el: '#app',

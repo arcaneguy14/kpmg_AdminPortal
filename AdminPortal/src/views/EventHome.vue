@@ -13,9 +13,12 @@
 </template>
 
 <script>
-  var myPlayer = dacast('', 'myDiv', {
-    width: 800,
-    height: 600
+  addEventListener("load", function(){
+    var CONTENT_ID = "124934_c_494047"
+    var myPlayer = dacast(CONTENT_ID, 'myDiv', {
+      width: 800,
+      height: 600
+    });
   });
     export default {
         name: "EventHome",

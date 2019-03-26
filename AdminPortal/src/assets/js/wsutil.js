@@ -15,7 +15,8 @@ export const wsutil = new Vuex.Store({
         curAct : "",
         temp: "",
         userProfile : {},
-        tableRow: []
+        tableRow: [],
+        users: []
     },
     getters : {
         getJwt : state =>{
@@ -24,36 +25,44 @@ export const wsutil = new Vuex.Store({
 
       projects (state) {
         return state.tableRow
+      },
+
+      getUsers (state) {
+        return state.users
       }
     },
     mutations : {
-        storeToken(state, token){
-            //store new jwt and refresh token
-            localStorage.setItem("jwtToken", token.jwt);
-            localStorage.setItem("rfhToken", token.rfh);
-            state.jwtToken = token.jwt;
-            state.rfhToken = token.rfh;
-        },
-        clearToken(state){
-            localStorage.removeItem("jwtToken");
-            localStorage.removeItem("rfhToken");
-            state.jwtToken = null;
-            state.rfhToken = null;
-        },
-        storeProfile(state){
+      storeToken(state, token) {
+        //store new jwt and refresh token
+        localStorage.setItem("jwtToken", token.jwt);
+        localStorage.setItem("rfhToken", token.rfh);
+        state.jwtToken = token.jwt;
+        state.rfhToken = token.rfh;
+      },
+      clearToken(state) {
+        localStorage.removeItem("jwtToken");
+        localStorage.removeItem("rfhToken");
+        state.jwtToken = null;
+        state.rfhToken = null;
+      },
+      storeProfile(state) {
 
-        },
+      },
 
-      projects (state, tableRow) {
+      projects(state, tableRow) {
         state.tableRow = tableRow
-      }
+      },
+
+      getUser(state, users) {
+        state.users = users
+      },
     },
     actions : {
         refreshJWT({ dispatch, commit, state }) {
             //Call refresh token api to get new token
             let rfhRq = {"data" : [{"rfh" : state.rfhToken}]};
             return new Promise((resolve, reject) => {
-                axios.post(context.apiBaseUrl + '/api/v2/refreshToken', JSON.stringify(rfhRq))
+                axios.post(state.apiBaseUrl + '/api/v2/refreshToken', JSON.stringify(rfhRq))
                 .then(response => {
                     if (response.data.respcode == '0'){
                         //Store new token and call again the api
@@ -76,7 +85,7 @@ export const wsutil = new Vuex.Store({
         userLogin(context, credentials){
             let rq = {"data": [{"user": credentials.username,"password": credentials.password, "fb_token": "", "google_token": ""}]};
             return new Promise((resolve, reject) => {
-                axios.post(context.state.apiBaseUrl + '/api/v2/makeUserLogin', JSON.stringify(rq))
+                axios.post(wsutil.state.apiBaseUrl + '/api/v2/makeUserLogin', JSON.stringify(rq))
                 .then(response => {
                     if (response.data.respcode == '0'){
                         //Store new token and call again the api
@@ -98,11 +107,23 @@ export const wsutil = new Vuex.Store({
             });
 
         },
-        getUser(context){
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.jwtToken
+        getUser(context, user){
             return new Promise((resolve, reject) => {
-                axios.get(context.state.apiBaseUrl + '/api/v2/getUsers?limit=10')
+              let userUrl = ''
+
+              if(user.nextPage != null)
+              {
+                userUrl += user.nextPage
+              }
+
+              else{
+                userUrl = '/api/v2/getUsers?limit=10'
+              }
+
+              console.log(user.nextPage)
+                axios.get(wsutil.state.apiBaseUrl + userUrl)
                 .then(response => {
+                  context.commit('getUser', response);
                     resolve(response.data);
                 })
                 .catch(function(error){
