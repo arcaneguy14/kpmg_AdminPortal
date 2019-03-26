@@ -20,14 +20,17 @@
           </b-row>
 
           <!-- Main table element -->
-          <div class="spinner-container" v-if="loading">
-            <HollowDotsSpinner
-              :animation-duration="1000"
-              :size="60"
-              :color="'#00519A'"
-              class="spinner"
-            />
-          </div>
+          <transition name="fade">
+            <div class="spinner-container" v-if="loading">
+              <HollowDotsSpinner
+                :animation-duration="1000"
+                :size="60"
+                :color="'#00519A'"
+                class="spinner"
+              />
+            </div>
+          </transition>
+
           <b-table
             show-empty
             stacked="md"
