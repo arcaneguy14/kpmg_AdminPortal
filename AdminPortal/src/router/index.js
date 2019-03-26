@@ -11,10 +11,9 @@ const Login = () => import('@/views/login/Login')
 
 // Users Management
 const UsersMain = () => import('@/views/users/UsersMain')
-
 const Dashboard = () => import('@/views/Dashboard')
-
 const EventHome = () => import('@/views/EventHome')
+const Featured = () => import('@/views/featured/Featured')
 
 
 Vue.use(Router)
@@ -69,6 +68,13 @@ export default new Router({
           name: 'Dashboard',
           beforeEnter: guard, // Using guard before entering the route
           component: Dashboard
+        },
+
+        {
+          path: 'featured',
+          name: 'Featured',
+          beforeEnter: guard,
+          component: Featured
         }
       ]
     },

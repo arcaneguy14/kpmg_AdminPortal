@@ -91,26 +91,21 @@
     <b-tab title="Social Media Linking">
         <b-form-group id="exampleInputGroup2" label="Social Media Linking" label-for="social-media">
           <b-row>
-            <b-col sm="6">
-              <b-card class="card-button position-relative" @mouseenter="active(1)">
-                <div class="card-button-icon"><i class="fa fa-facebook-square"></i></div>
-                <h5 class="mb-0 text-uppercase text-grey text-center">Facebook</h5>
-                <div @mouseleave="notActive(1)" id="s-1" class="s-link" v-bind:class="{ active: isActive1 }">
-                  <b-button type="button" variant="primary" @click="unlinkSocial('Facebook')">Unlink</b-button>
-                </div>
-              </b-card>
-            </b-col>
-
-            <b-col sm="6">
-              <b-card class="card-button position-relative" @mouseenter="active(2)">
-                <div class="card-button-icon"><i class="fa fa-google"></i></div>
-                <h5 class="mb-0 text-uppercase text-grey text-center">Google</h5>
-                <div @mouseleave="notActive(2)" id="s-2" class="s-link" v-bind:class="{ active: isActive2 }">
-                  <b-button type="button" variant="primary" @click="unlinkSocial('Google')">Unlink</b-button>
-                </div>
+            <b-col sm="6" v-for="s in social_media" :key="s.id">
+              <b-card class="card-button position-relative" @mouseover="showByIndex = s.id"
+                      @mouseleave="showByIndex = null">
+                <div class="card-button-icon"><i :class="s.icon"></i></div>
+                <h5 class="mb-0 text-uppercase text-grey text-center">{{s.type}}</h5>
+                <transition type="fade">
+                  <div id="s-1" class="s-link" v-if="showByIndex == s.id">
+                    <b-button type="button" variant="primary" @click="unlinkSocial(s.type)">Unlink</b-button>
+                  </div>
+                </transition>
               </b-card>
             </b-col>
           </b-row>
+
+          <!--
           <b-row>
             <b-col sm="6">
               <b-card class="card-button position-relative" @mouseenter="active(3)">
@@ -132,6 +127,7 @@
               </b-card>
             </b-col>
           </b-row>
+          -->
         </b-form-group>
     </b-tab>
   </b-tabs>
@@ -140,6 +136,7 @@
 <script>
   import BFormRadio from "bootstrap-vue/src/components/form-radio/form-radio";
   import BRow from "bootstrap-vue/src/components/layout/row";
+
   export default {
     name: "EditUser",
     components: {BRow, BFormRadio},
@@ -162,6 +159,14 @@
         isActive2: false,
         isActive3: false,
         isActive4: false,
+        showByIndex: null,
+
+        social_media : [
+          {id: '1', type: 'Facebook', icon: 'fa fa-facebook-square' },
+          {id: '2', type: 'Google', icon: 'fa fa-google'},
+          {id: '3', type: 'Instagram', icon: 'fa fa-instagram'},
+          {id: '4', type: 'LinkedIn', icon: 'fa fa-linkedin-square'}
+        ]
       }
     },
 
@@ -223,24 +228,6 @@
           }
         })
       },
-
-      active(arr){
-        this.isActive1 = arr == 1;
-        this.isActive2 = arr == 2;
-        this.isActive3 = arr == 3;
-        this.isActive4 = arr == 4;
-      },
-
-      notActive(arr){
-        if (arr == 1)
-        this.isActive1 = false;
-        if (arr == 2)
-          this.isActive2 = false;
-        if (arr == 3)
-          this.isActive3 = false;
-        if (arr == 4)
-          this.isActive4 = false;
-      }
     }
   }
 </script>
@@ -249,8 +236,7 @@
   @import "../../assets/scss/variables";
 
   .s-link{
-    display: none;
-    background-color: grey;
+    background-color: whitesmoke;
     position: absolute;
     z-index: 999;
     height: 100%;

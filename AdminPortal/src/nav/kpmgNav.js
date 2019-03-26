@@ -44,8 +44,8 @@ export default {
       }
     },
     {
-      name : 'Features',
-      url: '/kpmg/features',
+      name : 'Featured',
+      url: '/kpmg/featured',
       icon : 'cui-layers'
     },
     {
