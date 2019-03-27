@@ -235,26 +235,6 @@
 <style lang="scss">
   @import "../../assets/scss/variables";
 
-  .s-link{
-    background-color: whitesmoke;
-    position: absolute;
-    z-index: 999;
-    height: 100%;
-    width: 100%;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-
-    button{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 999;
-      opacity: 1;
-    }
-  }
-
   .s-link.active{
     display: block;
   }

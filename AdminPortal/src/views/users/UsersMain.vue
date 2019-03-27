@@ -44,6 +44,12 @@
             :sort-direction="sortDirection"
             @filtered="onFiltered"
             class="mt-3"
+            striped
+            id="table-transition-example"
+            :tbody-transition-props="transProps"
+            primary-key="id"
+
+
           >
 
             <template slot="social" slot-scope="row">
@@ -123,6 +129,10 @@ export default {
   data() {
     return {
       items: [],
+      transProps: {
+        // Transition name
+        name: 'flip-list'
+      },
       fields: [
         { key: 'id', label: 'id', sortable: true, sortDirection: 'desc' },
         { key: 'name', label: 'name', sortable: true, sortDirection: 'desc' },
@@ -252,3 +262,8 @@ export default {
 }
 </script>
 
+<style>
+  table#table-transition-example .flip-list-move {
+    transition: transform 1s;
+  }
+</style>

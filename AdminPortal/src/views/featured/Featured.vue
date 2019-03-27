@@ -12,6 +12,10 @@
         </b-card>
       </transition>
     </b-col>
+    <b-modal id="addFeatured" size="lg" title="Add to Featured" hide-footer>
+      <!-- <pre>{{ modalInfo.content }}</pre> -->
+      <AddFeatured :features="features"></AddFeatured>
+    </b-modal>
   </b-row>
 </template>
 
@@ -19,21 +23,33 @@
     import BCard from "bootstrap-vue/src/components/card/card";
     import BCardFooter from "bootstrap-vue/src/components/card/card-footer";
     import FeaturedComp from "./FeaturedComp";
+    import AddFeatured from "./AddFeatured"
 
     let features = [
-      {id: '1', width: '33%', label: 'Deadline', name: 'deadline', image: 'https://picsum.photos/400/400/?image=20' },
-      {id: '2', width: '33%', label: 'Budget', name: 'budget', image: 'https://picsum.photos/400/400/?image=20'},
-      {id: '3', width: '33%', label: 'Status', name: 'status', image: 'https://picsum.photos/400/400/?image=20'}
+      {id: '1', title: 'Deadline', name: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', category: '3', image: 'https://picsum.photos/400/400/?image=20' },
+      {id: '2', title: 'Budget', name: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', category: '1', image: 'https://picsum.photos/400/400/?image=20'},
+      {id: '3', title: 'Status', name: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', category: '2', image: 'https://picsum.photos/400/400/?image=20'}
     ];
 
     export default {
       name: "Featured",
-      components: {BCardFooter, BCard, FeaturedComp},
+      components: {BCardFooter, BCard, FeaturedComp, AddFeatured},
 
       data(){
         return{
           features: features
         }
+      },
+
+      methods: {
+        info(item, index, button) {
+          this.modalInfo.title = `Row index: ${index}`
+          this.modalInfo.content = JSON.stringify(item, null, 2)
+          this.$root.$emit('bv::show::modal', 'modalInfo', button)
+        },
+        add(button) {
+          this.$root.$emit('bv::show::modal', 'addFeatured', button)
+        },
       }
     }
 </script>
@@ -41,26 +57,5 @@
 <style lang="scss">
 .featured-card{
   cursor: pointer;
-}
-
-.s-link{
-  display: block;
-  background-color: whitesmoke;
-  position: absolute;
-  z-index: 999;
-  height: 100%;
-  width: 100%;
-  transform: translate(-50%,-50%);
-  left: 50%;
-  top: 50%;
-
-  button{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    opacity: 1;
-  }
 }
 </style>

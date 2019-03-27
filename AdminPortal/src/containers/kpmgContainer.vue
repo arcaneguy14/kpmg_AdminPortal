@@ -168,7 +168,7 @@ export default {
 
   .card-button:hover {
     border: 3px solid $kpmghoverblue;
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all .2s ease-in-out;
   }
 
@@ -177,5 +177,25 @@ export default {
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
+  }
+
+  .s-link{
+    background-color: whitesmoke;
+    position: absolute;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+
+    button{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 999;
+      opacity: 1;
+    }
   }
 </style>
