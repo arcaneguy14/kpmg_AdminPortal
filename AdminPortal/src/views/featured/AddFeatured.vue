@@ -1,16 +1,19 @@
 <template>
   <div>
     <b-row>
-      <b-col sm="6">
+      <b-col sm="3">
         <b-form-group>
-          <label>Filter By:</label>
           <b-form-select v-model="selected" :options="options" />
         </b-form-group>
       </b-col>
-      <b-col sm="6">
+      <b-col sm="7">
         <b-form-group>
-          <label>Search Title</label>
-          <b-form-input type="text" id="city" placeholder="Search"></b-form-input>
+          <b-form-input type="text" id="city" placeholder="Search Title"></b-form-input>
+        </b-form-group>
+      </b-col>
+      <b-col sm="2">
+        <b-form-group>
+          <b-button variant="primary"><i class="fa fa-search"></i> Search</b-button>
         </b-form-group>
       </b-col>
     </b-row>
@@ -20,7 +23,7 @@
              :fields="fields"
     >
       <template slot="actions" slot-scope="row">
-        <b-button size="sm" variant="success" class="mr-1">
+        <b-button size="sm" variant="success" class="mr-1" @click="showAlert">
           <i class="fa fa-edit"></i> Add to Featured
         </b-button>
       </template>
@@ -45,13 +48,30 @@
               { key: 'actions', label: 'Actions' }
             ],
             options: [
-              { value: null,text: 'Select' },
+              { value: null,text: 'Select Category' },
               { value: '1', text: 'Insights' },
               { value: '2', text: 'Services' },
               { value: '3', text: 'Industries' },
             ],
             selected: null
           }
+      },
+
+      methods: {
+        showAlert(){
+          // Use sweetalert2
+          this.$swal({
+            title: 'Add to Featured',
+            text: "Are you sure you want to add this as Featured content?",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, please!'
+          }).then((result) => {
+            if (result) {
+              this.genUserPass(1)
+            }
+          })
+        }
       }
     }
 </script>

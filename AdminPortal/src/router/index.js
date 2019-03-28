@@ -14,7 +14,7 @@ const UsersMain = () => import('@/views/users/UsersMain')
 const Dashboard = () => import('@/views/Dashboard')
 const EventHome = () => import('@/views/EventHome')
 const Featured = () => import('@/views/featured/Featured')
-
+const Navigation = () => import('@/views/navigation/Navigation')
 
 Vue.use(Router)
 
@@ -68,6 +68,13 @@ export default new Router({
           name: 'Dashboard',
           beforeEnter: guard, // Using guard before entering the route
           component: Dashboard
+        },
+
+        {
+          path: 'navigation',
+          name: 'Navigation',
+          beforeEnter: guard, // Using guard before entering the route
+          component: Navigation
         },
 
         {

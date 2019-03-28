@@ -27,12 +27,17 @@ export default {
     {
       name : 'Dashboard',
       url: '/kpmg/dashboard',
-      icon : 'fa fa-users'
+      icon : 'fa fa-home'
     },
     {
       name : 'User Management',
       url: '/kpmg/users',
-      icon : 'fa fa-users'
+      icon : 'fa fa-user-circle-o'
+    },
+    {
+      name : 'Navigation',
+      url: '/kpmg/navigation',
+      icon : 'fa fa-compass'
     },
     {
       title: true,
@@ -46,12 +51,12 @@ export default {
     {
       name : 'Featured',
       url: '/kpmg/featured',
-      icon : 'cui-layers'
+      icon : 'fa fa-star'
     },
     {
       name : 'Insights',
       url: '/kpmg/insights',
-      icon : 'cui-layers'
+      icon : 'fa fa-pencil'
     },
     {
       name : 'Services',
@@ -61,27 +66,27 @@ export default {
     {
       name : 'Industries',
       url: '/kpmg/industries',
-      icon : 'cui-layers'
+      icon : 'fa fa-building'
     },
     {
       name : 'About',
       url: '/kpmg/abouts',
-      icon : 'cui-layers'
+      icon : 'fa fa-question'
     },
     {
       name : 'Career',
       url: '/kpmg/career',
-      icon : 'cui-layers',
+      icon : 'fa fa-book',
       children: [
         {
           name: 'Career Articles',
-          url: '/kpmg/career/career_articales',
-          icon: 'icon-puzzle'
+          url: '/kpmg/career/career_articles',
+          icon: 'fa fa-newspaper-o'
         },
         {
           name: 'Career Jobs',
           url: '/kpmg/career/career_jobs',
-          icon: 'icon-puzzle'
+          icon: 'fa fa-suitcase'
         }
       ]
     }
