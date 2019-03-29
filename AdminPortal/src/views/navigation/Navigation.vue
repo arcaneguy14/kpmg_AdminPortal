@@ -35,6 +35,12 @@
                   </b-table>
                 </b-col>
               </b-row>
+          <b-row>
+            <b-col md="6" class="my-1">
+              <b-button class="mr-2" variant="outline-primary" :disabled="clickable" v-on:click="prevButton"><i class="fa fa-arrow-left"></i> Previous</b-button>
+              <b-button variant="outline-primary" v-on:click="nextButton">Next <i class="fa fa-arrow-right"></i></b-button>
+            </b-col>
+          </b-row>
         </b-card>
         <b-modal id="addLocation" size="lg" title="Add Location" hide-footer>
           <add-location></add-location>

@@ -2,16 +2,19 @@
   <b-row>
     <b-col>
       <b-row>
-        <b-col sm="6">
+        <b-col sm="2">
           <b-form-group>
-            <label>Filter By:</label>
             <b-form-select v-model="selected" :options="options" />
           </b-form-group>
         </b-col>
-        <b-col sm="6">
+        <b-col sm="8">
           <b-form-group>
-            <label>Search Title</label>
-            <b-form-input type="text" id="city" placeholder="Search"></b-form-input>
+            <b-form-input type="text" id="city" placeholder="Search Title"></b-form-input>
+          </b-form-group>
+        </b-col>
+        <b-col sm="2" class="d-flex justify-content-end">
+          <b-form-group>
+            <b-button variant="primary"><i class="fa fa-search"></i> Search</b-button>
           </b-form-group>
         </b-col>
       </b-row>
@@ -78,7 +81,7 @@
           showByIndex : null,
           selected: null,
           options: [
-            { value: null,text: 'Select' },
+            { value: null,text: 'Select Category' },
             { value: '1', text: 'Insights' },
             { value: '2', text: 'Services' },
             { value: '3', text: 'Industries' },

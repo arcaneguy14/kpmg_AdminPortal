@@ -15,6 +15,8 @@ const Dashboard = () => import('@/views/Dashboard')
 const EventHome = () => import('@/views/EventHome')
 const Featured = () => import('@/views/featured/Featured')
 const Navigation = () => import('@/views/navigation/Navigation')
+const Insights = () => import('@/views/insights/Insights')
+
 
 Vue.use(Router)
 
@@ -82,6 +84,13 @@ export default new Router({
           name: 'Featured',
           beforeEnter: guard,
           component: Featured
+        },
+
+        {
+          path: 'insights',
+          name: 'Insights',
+          beforeEnter: guard,
+          component: Insights
         }
       ]
     },

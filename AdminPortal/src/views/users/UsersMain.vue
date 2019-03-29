@@ -4,6 +4,11 @@
       <transition name="slide">
         <b-card>
           <b-row>
+            <b-col>
+              <h5 class="mb-3 text-uppercase text-grey">Users</h5>
+            </b-col>
+          </b-row>
+          <b-row>
             <b-col md="6" class="my-1">
               <b-form-group class="mb-0">
                 <b-input-group>
