@@ -198,4 +198,42 @@ export default {
       opacity: 1;
     }
   }
+.table-action{
+  .fa-star{
+    color: gold;
+    cursor: pointer;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+
+  .fa-star:hover{
+    color: darkgoldenrod;
+  }
+
+  .fa-edit{
+    color: $kpmgblue;
+    cursor: pointer;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+
+  .fa-edit:hover{
+    color: $kpmghoverblue;
+  }
+
+  .fa-trash{
+    color: red;
+    cursor: pointer;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+
+  .fa-trash:hover{
+    color: darkred;
+  }
+
+  span{
+    padding-right: 5px;
+  }
+}
 </style>

@@ -1,8 +1,6 @@
 <template>
   <b-row>
     <b-col>
-      <b-card>
-        <h5 class="mb-3 text-uppercase text-grey">Insights</h5>
         <div id="toolbar">
     <span class="ql-formats">
       <select class="ql-size"></select>
@@ -48,13 +46,20 @@
               <button class="ql-customControl" style="width: 100px; text-align: left; display: contents;"><i class="fa fa-building"></i> Add Sponsor</button>
             </span>
             -->
+
+            <!-- Add custom button(sponsor button) below on the place where this component is required ...to be uncommented when required
+            <template v-slot:customButton>
+              <span class="ql-formats">
+                  <button class="ql-customControl" style="width: 100px; text-align: left; display: contents;"><i class="fa fa-building"></i> Add Sponsor</button>
+              </span>
+            </template>
+            -->
           </slot>
         </div>
         <div id="editor" v-model="content">
         </div>
         <b-button variant="primary" @click="handleSavingContent" class="mt-3">Save</b-button>
        <!-- <text-editor :editorToolbar="toolbarOpts.modules.toolbar.container"></text-editor> -->
-      </b-card>
     </b-col>
   </b-row>
 </template>
