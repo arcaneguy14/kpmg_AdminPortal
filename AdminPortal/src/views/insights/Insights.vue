@@ -10,10 +10,34 @@
         <b-row>
           <b-col>
             <b-row>
-              <b-col class="d-flex justify-content-end">
-                <b-button size="sm" variant="info" class="mb-3" @click="add($event.target, 'addInsightsMainText')">
+              <b-col>
+                <!--
+                <b-button size="sm" variant="info" class="mb-3" @click="editMainText">
                   <i class="fa fa-pencil"></i> Add Insights Main Text
                 </b-button>
+                -->
+                <h6 class="mb-3 text-uppercase text-grey">Add Insights Main Text</h6>
+              </b-col>
+            </b-row>
+            <b-form @submit="onSubmit" @reset="onReset" id="addInsightsMainText" v-if="show">
+            <b-row>
+              <b-col>
+                <text-editor v-model="model" :isEditing="isEditing"></text-editor>
+              </b-col>
+            </b-row>
+            <b-row class="mt-3">
+              <b-col>
+                <transition name="fade">
+                  <b-button type="submit" :key="buttonID" variant="primary" class="mr-1" style="position: absolute;">
+                    {{ isEditing ? 'Save' : 'Edit' }}
+                  </b-button>
+                </transition>
+                <b-button type="reset" variant="danger" style="margin-left: 60px;">Reset</b-button>
+              </b-col>
+            </b-row>
+            </b-form>
+            <b-row>
+              <b-col class="d-flex justify-content-end">
                 <b-button size="sm" variant="primary" class="ml-3 mb-3" @click="add($event.target, 'insightsInfo')">
                   <i class="fa fa-pencil"></i> Add Insights
                 </b-button>
@@ -26,6 +50,7 @@
                      primary-key="id"
                      id="table-transition-example"
                      :tbody-transition-props="transProps"
+                     class="mt-3"
             >
               <template slot="actions" slot-scope="row">
                 <div class="table-action">
@@ -44,9 +69,11 @@
           </b-col>
         </b-row>
       </b-card>
+      <!--
       <b-modal id="addInsightsMainText" size="lg" title="Add Insights Main Text" hide-footer>
         <add-insights-main></add-insights-main>
       </b-modal>
+      -->
       <b-modal id="insightsInfo" @hide="resetModal" size="lg" title="Add Article" hide-footer>
         <add-article :insightsInfo="insightsInfo"></add-article>
       </b-modal>
@@ -58,12 +85,14 @@
   import AddInsightsMainText from '../insights/AddInsightsMainText'
   import AddInsightsArticle from '../insights/AddInsightsArticle'
   import BModal from "bootstrap-vue/src/components/modal/modal"
+  import TextEditor from '../components/TextEditor'
 
   let tableContent = [
     {id: '1', image: '', title: 'Digital Transformation', content: 'Vertical Office, Bangsar South'},
     {id: '2', image: '', title: 'Customer First Insights', content: 'Sunway Pyramid'},
     {id: '3', image: '', title: 'Data-driven technologies', content: 'Bandar Puteri, Klang'},
   ];
+
   export default {
     name: "Insights",
 
@@ -71,6 +100,7 @@
       BModal,
       'add-insights-main' : AddInsightsMainText,
       'add-article' : AddInsightsArticle,
+      'text-editor': TextEditor
     },
 
     data() {
@@ -88,6 +118,11 @@
           { key: 'actions', label: 'Actions' }
         ],
         insightsInfo: { title: '', content: '', name: '' },
+        model: '',
+        show: true,
+        isEditing: false,
+        buttonID: 'edit',
+        buttonType: ''
       }
     },
 
@@ -107,6 +142,30 @@
         this.insightsInfo.content = ''
       },
 
+      onReset(evt) {
+        evt.preventDefault()
+        this.model = ''
+        this.show = false
+        this.$nextTick(() => {
+          this.show = true
+        })
+      },
+
+      onSubmit(evt) {
+        evt.preventDefault()
+        this.handleSavingContent()
+        this.isEditing = !this.isEditing
+        if (this.isEditing == true)
+        {
+          this.buttonID = 'save'
+        }
+
+        else{
+          this.buttonID = 'edit'
+        }
+        //alert(JSON.stringify(this.form))
+      },
+
       removeArticle(param){
         // Use sweetalert2
         this.$swal({
@@ -119,6 +178,12 @@
           if (result) {
           }
         })
+      },
+
+      handleSavingContent: function() {
+        // You have the content to save
+        const html = this.model
+        console.log(html)
       },
     }
   }

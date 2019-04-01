@@ -4,42 +4,42 @@
       <b-col>
         <b-form-group
           id="exampleInputGroup1"
-          label="Add Main Text:"
+          label="Content:"
           label-for="exampleInput1"
         >
-          <b-form-textarea
-            id="textarea"
-            v-model="form.mainText"
-            required
-            placeholder="Enter text"
-            rows="3"
-            max-rows="6"
-          />
+          <text-editor v-model="model"></text-editor>
         </b-form-group>
       </b-col>
     </b-row>
-
     <b-button type="submit" variant="primary" class="mr-1">Submit</b-button>
     <b-button type="reset" variant="danger">Reset</b-button>
   </b-form>
 </template>
 
 <script>
+  import TextEditor from '../components/TextEditor'
+
   export default {
     name: "AddInsightsMainText",
+
+    components: {
+      'text-editor': TextEditor
+    },
     data() {
       return {
+        show: true,
+        model: '',
         form: {
           mainText: '',
         },
-        show: true
       }
     },
 
     methods: {
       onSubmit(evt) {
-        evt.preventDefault()
-        alert(JSON.stringify(this.form))
+        //evt.preventDefault()
+        //this.handleSavingContent()
+        //alert(JSON.stringify(this.form))
       },
       onReset(evt) {
         evt.preventDefault()
@@ -51,6 +51,12 @@
           this.show = true
         })
       },
+
+      handleSavingContent: function() {
+        // You have the content to save
+        const html = this.model
+        console.log(html)
+      }
     }
   }
 </script>

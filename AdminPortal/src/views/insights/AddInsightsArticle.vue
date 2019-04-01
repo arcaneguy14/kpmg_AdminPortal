@@ -14,16 +14,14 @@
         </b-col>
       </b-row>
     </b-form-group>
-
-
     <b-row>
       <b-col>
         <b-form-group
-          id="exampleInputGroup1"
+          id="exampleInputGroup2"
           label="Content:"
-          label-for="exampleInput1"
+          label-for="exampleInput2"
         >
-          <text-editor></text-editor>
+          <text-editor v-model="model"></text-editor>
         </b-form-group>
       </b-col>
     </b-row>
@@ -49,7 +47,8 @@
           content: '',
           author: ''
         },
-        show: true
+        show: true,
+        model: ''
       }
     },
 
@@ -57,17 +56,26 @@
       onSubmit(evt) {
         evt.preventDefault()
         alert(JSON.stringify(this.form))
+        this.handleSavingContent()
       },
       onReset(evt) {
         evt.preventDefault()
         /* Reset our form values */
         this.form.mainText = ''
+        this.form.title = ''
+        this.model = ''
         /* Trick to reset/clear native browser form validation state */
         this.show = false
         this.$nextTick(() => {
           this.show = true
         })
       },
+
+      handleSavingContent: function() {
+        // You have the content to save
+        const html = this.model
+        console.log(html)
+      }
     }
   }
 </script>

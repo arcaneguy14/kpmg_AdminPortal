@@ -10,8 +10,18 @@
               <b-row>
                 <b-col>
                   <b-row>
-                    <b-col class="d-flex justify-content-end">
-                      <b-button size="sm" variant="primary" class="mb-3" @click="add($event.target, 'addLocation')">
+                    <b-col md="6" class="my-1">
+                      <b-form-group class="mb-0">
+                        <b-input-group>
+                          <b-form-input v-model="filter" placeholder="Type to Search" />
+                          <b-input-group-append>
+                            <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                          </b-input-group-append>
+                        </b-input-group>
+                      </b-form-group>
+                    </b-col>
+                    <b-col md="6" class="my-1 d-flex justify-content-end">
+                      <b-button variant="primary" @click="add($event.target, 'addLocation')">
                         <i class="fa fa-map-marker"></i> Add Location
                       </b-button>
                     </b-col>
@@ -21,7 +31,9 @@
                            responsive
                            :fields="fields"
                            primary-key="id"
+                           :filter="filter"
                            id="table-transition-example"
+                           class="mt-3"
                            :tbody-transition-props="transProps"
                   >
                     <template slot="actions" slot-scope="row">
@@ -87,6 +99,7 @@
               { key: 'actions', label: 'Actions' }
             ],
             locationInfo: { title: '', content: '', name: '' },
+            filter: null
           }
       },
 

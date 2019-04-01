@@ -1,5 +1,17 @@
 <template>
   <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="modalInfo">
+    <b-row>
+      <b-col sm="12">
+        <b-form-group id="exampleInputGroup3" label="Title:" label-for="exampleInput3">
+          <b-form-input
+            id="exampleInput2"
+            type="text"
+            v-model="form.title"
+            required
+            placeholder="Title" />
+        </b-form-group>
+      </b-col>
+    </b-row>
     <b-form-group inline id="exampleInputGroup" label="" label-for="exampleInput">
       <b-row>
         <b-col sm="6">
@@ -64,6 +76,7 @@
     data() {
       return {
         form: {
+          title: '',
           lat: '',
           long: '',
           address: '',
@@ -80,6 +93,7 @@
       onReset(evt) {
         evt.preventDefault()
         /* Reset our form values */
+        this.form.title = ''
         this.form.lat = ''
         this.form.long = ''
         this.form.address = ''

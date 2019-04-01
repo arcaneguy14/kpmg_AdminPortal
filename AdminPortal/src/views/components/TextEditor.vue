@@ -1,7 +1,6 @@
 <template>
-  <b-row>
-    <b-col>
-        <div id="toolbar">
+  <div>
+        <div ref="toolbar">
     <span class="ql-formats">
       <select class="ql-size"></select>
     </span>
@@ -33,8 +32,6 @@
     </span>
           <span class="ql-formats">
       <button class="ql-link"></button>
-      <button class="ql-image"></button>
-      <button class="ql-video"></button>
       <button class="ql-formula"></button>
     </span>
           <span class="ql-formats">
@@ -56,12 +53,11 @@
             -->
           </slot>
         </div>
-        <div id="editor" v-model="content">
+        <div class="editor" ref="editor" v-html="content">
         </div>
-        <b-button variant="primary" @click="handleSavingContent" class="mt-3">Save</b-button>
+        <!-- <b-button variant="primary" @click="handleSavingContent" class="mt-3">Save</b-button> -->
        <!-- <text-editor :editorToolbar="toolbarOpts.modules.toolbar.container"></text-editor> -->
-    </b-col>
-  </b-row>
+  </div>
 </template>
 
 <script>
@@ -91,13 +87,36 @@
     export default {
       name: "TextEditor",
       components: {BButton},
+      props: {
+        value: {
+          type: String,
+          default: ''
+        },
+        isEditing: {
+          type: Boolean,
+          default: ''
+        }
+      },
       data(){
         return{
-         content: ""
+          content: '',
+          editor: null,
         }
       },
       mounted () {
         this.initQuill()
+      },
+      watch: {
+        isEditing: function(newVal, oldVal) { // watch it
+          if (newVal == false){
+            this.editor.enable(false);
+            //console.log('Prop changed: ', newVal, ' | was: ', oldVal)
+          }
+
+          else{
+            this.editor.enable(true);
+          }
+        }
       },
       beforeDestroy () {
         this.quill = null
@@ -105,11 +124,11 @@
       },
       methods: {
         initQuill () {
-          const quill = new Quill('#editor', {
+          this.editor = new Quill(this.$refs.editor, {
             theme: 'snow',
             modules: {
               toolbar: {
-                container: '#toolbar',
+                container: this.$refs.toolbar,
                 handlers: {
                   'customControl': () => {
                     console.log('customControl was clicked')
@@ -119,13 +138,17 @@
               }
             }
           })
-          this.quill = quill
+          //this.quill = quill
+          this.editor.root.innerHTML = this.value;
+
+          this.editor.on('text-change', () => this.update());
+          if (this.isEditing === false){
+            this.editor.enable(false);
+          }
         },
 
-        handleSavingContent: function() {
-          // You have the content to save
-          const html = document.querySelector('#editor').children[0].innerHTML
-          console.log(html)
+        update() {
+          this.$emit('input', this.editor.getText() ? this.editor.root.innerHTML : '');
         }
       },
 
@@ -133,7 +156,12 @@
 </script>
 
 <style scoped>
-  #editor {
-    height: 375px;
+  .editor {
+    height: 275px;
+  }
+
+  .ql-disabled{
+    background: grey;
+    opacity: .6;
   }
 </style>

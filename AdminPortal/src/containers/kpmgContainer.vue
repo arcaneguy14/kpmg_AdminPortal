@@ -32,8 +32,8 @@
     <TheFooter>
       <!--footer-->
       <div class="ml-auto">
-        <a href="#"><img src="img/sage.jpeg" width="60" height="25" alt="SAGE42 Logo" class="footer-logo"/> </a>
-        <span class="ml-1">&copy; 2019 Sage42 </span>
+        <!-- <a href="#"><img src="img/sage.jpeg" width="60" height="25" alt="SAGE42 Logo" class="footer-logo"/> </a>
+        <span class="ml-1">&copy; 2019 Sage42 </span> -->
       </div>
     </TheFooter>
   </div>
