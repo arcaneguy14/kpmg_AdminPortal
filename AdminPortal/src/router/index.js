@@ -16,6 +16,7 @@ const EventHome = () => import('@/views/EventHome')
 const Featured = () => import('@/views/featured/Featured')
 const Navigation = () => import('@/views/navigation/Navigation')
 const Insights = () => import('@/views/insights/Insights')
+const Services = () => import('@/views/services/Services')
 
 
 Vue.use(Router)
@@ -91,6 +92,13 @@ export default new Router({
           name: 'Insights',
           beforeEnter: guard,
           component: Insights
+        },
+
+        {
+          path: 'services',
+          name: 'Services',
+          beforeEnter: guard,
+          component: Services
         }
       ]
     },
