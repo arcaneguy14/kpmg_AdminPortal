@@ -45,8 +45,20 @@
                 -->
                 <h6 class="text-uppercase text-grey line" style="line-height: 2">Insights List</h6>
               </b-col>
+            </b-row>
+            <b-row>
+              <b-col md="6" class="my-1">
+                <b-form-group class="mb-0">
+                  <b-input-group>
+                    <b-form-input v-model="filter" placeholder="Type to Search" />
+                    <b-input-group-append>
+                      <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                    </b-input-group-append>
+                  </b-input-group>
+                </b-form-group>
+              </b-col>
               <b-col sm="6" class="d-flex justify-content-end">
-                <b-button size="sm" variant="primary" class="ml-3 mb-3" @click="add($event.target, 'insightsInfo')">
+                <b-button variant="primary" class="ml-3 mb-3" @click="add($event.target, 'insightsInfo')">
                   <i class="fa fa-pencil"></i> Add Insights
                 </b-button>
               </b-col>
@@ -56,6 +68,7 @@
                      :items="tableContent"
                      responsive
                      :fields="fields"
+                     :filter="filter"
                      primary-key="id"
                      id="table-transition-example"
                      :tbody-transition-props="transProps"
@@ -142,7 +155,8 @@
         isEditing: false,
         buttonID: 'edit',
         buttonType: '',
-        mainProps: { width: 250 }
+        mainProps: { width: 250 },
+        filter: null
       }
     },
 

@@ -17,6 +17,7 @@ const Featured = () => import('@/views/featured/Featured')
 const Navigation = () => import('@/views/navigation/Navigation')
 const Insights = () => import('@/views/insights/Insights')
 const Services = () => import('@/views/services/Services')
+const Industries = () => import('@/views/industries/Industries')
 
 
 Vue.use(Router)
@@ -99,6 +100,13 @@ export default new Router({
           name: 'Services',
           beforeEnter: guard,
           component: Services
+        },
+
+        {
+          path: 'industries',
+          name: 'Industries',
+          beforeEnter: guard,
+          component: Industries
         }
       ]
     },

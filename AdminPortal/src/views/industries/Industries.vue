@@ -4,7 +4,7 @@
       <b-card>
         <b-row>
           <b-col>
-            <h5 class="mb-3 text-uppercase text-grey">Services</h5>
+            <h5 class="mb-3 text-uppercase text-grey">Industries</h5>
           </b-col>
         </b-row>
         <b-row>
@@ -16,10 +16,10 @@
                   <i class="fa fa-pencil"></i> Add Insights Main Text
                 </b-button>
                 -->
-                <h6 class="mb-3 text-uppercase text-grey">Add Services Main Text</h6>
+                <h6 class="mb-3 text-uppercase text-grey">Add Industries Main Text</h6>
               </b-col>
             </b-row>
-            <b-form @submit="onSubmit" @reset="onReset" id="addServicesMainText" v-if="show">
+            <b-form @submit="onSubmit" @reset="onReset" id="addIndustriesMainText" v-if="show">
               <b-row>
                 <b-col>
                   <text-editor v-model="model" :isEditing="isEditing"></text-editor>
@@ -43,7 +43,7 @@
                   <i class="fa fa-pencil"></i> Add Insights Main Text
                 </b-button>
                 -->
-                <h6 class="text-uppercase text-grey line" style="line-height: 2">Services List</h6>
+                <h6 class="text-uppercase text-grey line" style="line-height: 2">Industries List</h6>
               </b-col>
             </b-row>
             <b-row>
@@ -58,8 +58,8 @@
                 </b-form-group>
               </b-col>
               <b-col sm="6" class="d-flex justify-content-end">
-                <b-button variant="primary" class="ml-3 mb-3" @click="add($event.target, 'servicesInfo')">
-                  <i class="fa fa-pencil"></i> Add Services
+                <b-button variant="primary" class="ml-3 mb-3" @click="add($event.target, 'industriesInfo')">
+                  <i class="fa fa-pencil"></i> Add Industries
                 </b-button>
               </b-col>
             </b-row>
@@ -101,11 +101,11 @@
         <add-insights-main></add-insights-main>
       </b-modal>
       -->
-      <b-modal id="servicesInfo" @hide="resetModal" size="lg" title="Add Services Article" hide-footer>
-        <add-services-article></add-services-article>
+      <b-modal id="industriesInfo" @hide="resetModal" size="lg" title="Add Industries Article" hide-footer>
+        <add-industries-article></add-industries-article>
       </b-modal>
-      <b-modal id="updateServices" @hide="resetModal" size="lg" title="Update Services Article" hide-footer>
-        <update-services-article :servicesInfo="servicesInfo" v-if="show"></update-services-article>
+      <b-modal id="updateIndustries" @hide="resetModal" size="lg" title="Update Industries Article" hide-footer>
+        <update-industries-article :industriesInfo="industriesInfo" v-if="show"></update-industries-article>
       </b-modal>
     </b-col>
   </b-row>
@@ -114,8 +114,8 @@
 <script>
   import BModal from "bootstrap-vue/src/components/modal/modal"
   import TextEditor from '../components/TextEditor'
-  import AddServicesArticle from "./AddServicesArticle"
-  import UpdateServicesArticle from './UpdateServicesArticle'
+  import AddIndustriesArticle from "../industries/AddIndustriesArticle"
+  import UpdateIndustriesArticle from '../industries/UpdateIndustriesArticle'
 
   let tableContent = [
     {id: '1', image: 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png', title: 'Digital Transformation', content: 'Vertical Office, Bangsar South', subtitle: 'subtitle1'},
@@ -124,12 +124,12 @@
   ];
 
   export default {
-    name: "Services",
+    name: "Industries",
 
     components: {
       BModal,
-      'add-services-article' : AddServicesArticle,
-      'update-services-article': UpdateServicesArticle,
+      'add-industries-article' : AddIndustriesArticle,
+      'update-industries-article': UpdateIndustriesArticle,
       'text-editor': TextEditor
     },
 
@@ -147,7 +147,7 @@
           { key: 'content', label: 'Content', sortable: true, sortDirection: 'desc' },
           { key: 'actions', label: 'Actions' }
         ],
-        servicesInfo: { title: '', content: '', name: '' },
+        industriesInfo: { title: '', content: '', name: '' },
         model: '',
         show: true,
         isEditing: false,
@@ -164,9 +164,9 @@
       },
 
       info(item, index, button) {
-        this.servicesInfo.title = `Row index: ${index}`
-        this.servicesInfo.content = JSON.stringify(item, null, 2)
-        this.$root.$emit('bv::show::modal', 'updateServices', button)
+        this.industriesInfo.title = `Row index: ${index}`
+        this.industriesInfo.content = JSON.stringify(item, null, 2)
+        this.$root.$emit('bv::show::modal', 'updateIndustries', button)
 
         this.show = false
         this.$nextTick(() => {
@@ -175,8 +175,8 @@
       },
 
       resetModal() {
-        this.servicesInfo.title = ''
-        this.servicesInfo.content = ''
+        this.industriesInfo.title = ''
+        this.industriesInfo.content = ''
       },
 
       onReset(evt) {
