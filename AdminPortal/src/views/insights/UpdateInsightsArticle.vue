@@ -4,7 +4,7 @@
       <b-col md="4">
         <div class="avatar-upload">
           <div class="avatar-edit">
-            <input type='file' id="imageUpload" @change="previewImage(1)" accept="image/*"/>
+            <input type='file' id="imageUpload" @change="previewImage(2)" accept="image/*"/>
             <label for="imageUpload"><i class="fa fa-pencil"></i></label>
           </div>
           <div class="avatar-preview" v-if="!form.image">
@@ -23,7 +23,7 @@
                 <b-form-input
                   id="exampleInput2"
                   type="text"
-                  v-model="form.title"
+                  :value="JSON.parse(insightsInfo.content).title"
                   required
                   placeholder="Add Title" />
               </b-form-group>
@@ -32,7 +32,7 @@
                 <b-form-input
                   id="exampleInput3"
                   type="text"
-                  v-model="form.author"
+                  :value="JSON.parse(insightsInfo.content).author"
                   required
                   placeholder="Add Author" />
               </b-form-group>
@@ -48,7 +48,7 @@
           label="Content:"
           label-for="exampleInput2"
         >
-          <text-editor v-model="model"></text-editor>
+          <text-editor :value="JSON.parse(insightsInfo.content).content"></text-editor>
         </b-form-group>
         <b-button type="submit" variant="primary" class="mr-1">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
@@ -61,10 +61,11 @@
   import TextEditor from '../components/TextEditor'
 
   export default {
-    name: "AddInsightsArticle",
+    name: "UpdateInsightsArticle",
     components: {
       'text-editor': TextEditor
     },
+    props: ['insightsInfo'],
     data() {
       return {
         form: {
@@ -90,6 +91,7 @@
         this.form.mainText = ''
         this.form.title = ''
         this.form.author = ''
+        this.form.content = ''
         this.model = ''
         this.form.image = 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png'
         /* Trick to reset/clear native browser form validation state */
@@ -116,11 +118,8 @@
           reader.onload = (e) => {
             // Note: arrow function used here, so that "this.image" refers to the image of Vue component
             // Read image as base64 and set to image
-            if (img === 1)
-              this.form.image = e.target.result;
-
             if (img === 2)
-              this.image = e.target.result;
+              this.form.image = e.target.result;
           }
           // Start the reader job - read file as a data url (base64 format)
           reader.readAsDataURL(input.files[0]);
