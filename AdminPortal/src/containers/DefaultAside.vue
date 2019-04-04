@@ -9,7 +9,7 @@
           Today
         </b-list-group-item>
         <b-list-group-item href="#" class="list-group-item-accent-warning list-group-item-divider">
-          <div class="avatar float-right">
+          <div class="avatar float-right">fields
             <img class="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com">
           </div>
           <div>Meeting with

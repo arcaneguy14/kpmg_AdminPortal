@@ -127,7 +127,7 @@ export default {
       }
     }
   }
-
+/*
   .spinner-container{
     position: absolute;
     left: 50%;
@@ -146,6 +146,7 @@ export default {
     top: 50%;
     transform: translate(-50%, -50%);
   }
+  */
 
   .swal2-container {
     z-index: 9999;

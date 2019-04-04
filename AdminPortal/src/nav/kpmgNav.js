@@ -1,5 +1,6 @@
 export default {
   items: [
+    /*
     {
       title: true,
       name: 'Switch Mode',
@@ -15,6 +16,7 @@ export default {
       class: 'small',
       icon: 'fa fa-arrow-left'
     },
+    */
     {
       title: true,
       name: 'Base',
@@ -24,21 +26,25 @@ export default {
         attributes: {}
       }
     },
+    /*
     {
       name : 'Dashboard',
       url: '/kpmg/dashboard',
       icon : 'fa fa-home'
     },
+    */
     {
       name : 'User Management',
       url: '/kpmg/users',
       icon : 'fa fa-user-circle-o'
     },
+    /*
     {
       name : 'Navigation',
       url: '/kpmg/navigation',
       icon : 'fa fa-compass'
     },
+    */
     {
       title: true,
       name: 'KPMG APP',
@@ -70,13 +76,14 @@ export default {
     },
     {
       name : 'About',
-      url: '/kpmg/abouts',
+      url: '/kpmg/about',
       icon : 'fa fa-question'
     },
     {
-      name : 'Career',
-      url: '/kpmg/career',
-      icon : 'fa fa-book',
+      name : 'Career Article',
+      url: '/kpmg/career_articles',
+      icon : 'fa fa-newspaper-o',
+      /*
       children: [
         {
           name: 'Career Articles',
@@ -89,6 +96,7 @@ export default {
           icon: 'fa fa-suitcase'
         }
       ]
+      */
     }
   ]
 }

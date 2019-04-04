@@ -1,3 +1,4 @@
+/*
 export default {
   items: [
     {
@@ -36,3 +37,4 @@ export default {
     },
   ]
 }
+*/

@@ -18,6 +18,9 @@ const Navigation = () => import('@/views/navigation/Navigation')
 const Insights = () => import('@/views/insights/Insights')
 const Services = () => import('@/views/services/Services')
 const Industries = () => import('@/views/industries/Industries')
+const About = () => import('@/views/about/About')
+const Career = () => import('@/views/career/Career')
+const CareerJobs = () => import('@/views/career/CareerJobs')
 
 
 Vue.use(Router)
@@ -56,7 +59,7 @@ export default new Router({
     {
       path: '/kpmg',
       name: 'Kpmg Mode Home',
-      redirect: '/kpmg/dashboard',
+      redirect: '/kpmg/users',
       beforeEnter: guard, // Using guard before entering the route
       component: kpmgContainer,
       children: [
@@ -67,6 +70,7 @@ export default new Router({
           component: UsersMain
         },
 
+        /*
         {
           path: 'dashboard',
           name: 'Dashboard',
@@ -80,7 +84,7 @@ export default new Router({
           beforeEnter: guard, // Using guard before entering the route
           component: Navigation
         },
-
+        */
         {
           path: 'featured',
           name: 'Featured',
@@ -107,9 +111,33 @@ export default new Router({
           name: 'Industries',
           beforeEnter: guard,
           component: Industries
+        },
+
+        {
+          path: 'about',
+          name: 'About',
+          beforeEnter: guard,
+          component: About
+        },
+
+        {
+          path: 'career_articles',
+          name: 'Career Article',
+          beforeEnter: guard,
+          component: Career
+        },
+
+        /*
+        {
+          path: 'career/career_jobs',
+          name: 'CareerJobs',
+          beforeEnter: guard,
+          component: CareerJobs
         }
+        */
       ]
     },
+    /*
     {
       path: '/event',
       name: 'Event Mode Home',
@@ -123,5 +151,6 @@ export default new Router({
         }
       ]
     }
+    */
   ]
 })

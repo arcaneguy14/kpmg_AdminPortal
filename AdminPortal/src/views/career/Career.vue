@@ -4,7 +4,7 @@
       <b-card>
         <b-row>
           <b-col>
-            <h5 class="mb-3 text-uppercase text-grey">Industries</h5>
+            <h5 class="mb-3 text-uppercase text-grey">Career</h5>
           </b-col>
         </b-row>
         <b-row>
@@ -16,10 +16,10 @@
                   <i class="fa fa-pencil"></i> Add Insights Main Text
                 </b-button>
                 -->
-                <h6 class="mb-3 text-uppercase text-grey">Add Industries Main Text</h6>
+                <h6 class="mb-3 text-uppercase text-grey">Add Career Main Text</h6>
               </b-col>
             </b-row>
-            <b-form @submit="onSubmit" @reset="onReset" id="addIndustriesMainText" v-if="show">
+            <b-form @submit="onSubmit" @reset="onReset" id="addCareerMainText" v-if="show">
               <b-row>
                 <b-col>
                   <text-editor v-model="model" :isEditing="isEditing"></text-editor>
@@ -43,7 +43,7 @@
                   <i class="fa fa-pencil"></i> Add Insights Main Text
                 </b-button>
                 -->
-                <h6 class="text-uppercase text-grey line" style="line-height: 2">Industries List</h6>
+                <h6 class="text-uppercase text-grey line" style="line-height: 2">Career List</h6>
               </b-col>
             </b-row>
             <b-row>
@@ -58,8 +58,8 @@
                 </b-form-group>
               </b-col>
               <b-col sm="6" class="d-flex justify-content-end">
-                <b-button variant="primary" class="ml-3 mb-3" @click="add($event.target, 'industriesInfo')">
-                  <i class="fa fa-pencil"></i> Add Industries
+                <b-button variant="primary" class="ml-3 mb-3" @click="add($event.target, 'careerInfo')">
+                  <i class="fa fa-pencil"></i> Add Career
                 </b-button>
               </b-col>
             </b-row>
@@ -67,7 +67,7 @@
             <b-table striped hover
                      :items="tableContent"
                      responsive
-                     :fields="fields"
+                     :fields="fields2"
                      :filter="filter"
                      primary-key="id"
                      id="table-transition-example"
@@ -90,8 +90,8 @@
         </b-row>
         <b-row>
           <b-col md="6" class="my-1">
-            <b-button class="mr-2" variant="outline-primary" :disabled="clickable" v-on:click="prevButton"><i class="fa fa-arrow-left"></i> Previous</b-button>
-            <b-button variant="outline-primary" v-on:click="nextButton">Next <i class="fa fa-arrow-right"></i></b-button>
+            <b-button class="mr-2" variant="outline-primary"><i class="fa fa-arrow-left"></i> Previous</b-button>
+            <b-button variant="outline-primary">Next <i class="fa fa-arrow-right"></i></b-button>
           </b-col>
         </b-row>
       </b-card>
@@ -100,11 +100,11 @@
         <add-insights-main></add-insights-main>
       </b-modal>
       -->
-      <b-modal id="industriesInfo" @hide="resetModal" size="lg" title="Add Industries Article" hide-footer>
-        <add-industries-article></add-industries-article>
+      <b-modal id="careerInfo" @hide="resetModal" size="lg" title="Add Career Article" hide-footer>
+        <add-career-article></add-career-article>
       </b-modal>
-      <b-modal id="updateIndustries" @hide="resetModal" size="lg" title="Update Industries Article" hide-footer>
-        <update-industries-article :industriesInfo="industriesInfo" v-if="show"></update-industries-article>
+      <b-modal id="updateCareer" @hide="resetModal" size="lg" title="Update Career Article" hide-footer>
+        <update-career-article :careerInfo="careerInfo" v-if="show"></update-career-article>
       </b-modal>
     </b-col>
   </b-row>
@@ -113,22 +113,40 @@
 <script>
   import BModal from "bootstrap-vue/src/components/modal/modal"
   import TextEditor from '../components/TextEditor'
-  import AddIndustriesArticle from "../industries/AddIndustriesArticle"
-  import UpdateIndustriesArticle from '../industries/UpdateIndustriesArticle'
+  import AddCareerArticle from "../career/AddCareerArticle"
+  import UpdateCareerArticle from '../career/UpdateCareerArticle'
 
   let tableContent = [
-    {id: '1', image: 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png', title: 'Digital Transformation', content: 'Vertical Office, Bangsar South', subtitle: 'subtitle1'},
-    {id: '2', image: 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png', title: 'Customer First Insights', content: 'Sunway Pyramid', subtitle: 'subtitle2'},
-    {id: '3', image: 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png', title: 'Data-driven technologies', content: 'Bandar Puteri, Klang', subtitle: 'subtitle3'},
+    {
+      "id": "1",
+      "image": "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png",
+      "title": "Digital Transformation",
+      "content": "Vertical Office, Bangsar South",
+      "subtitle": "subtitle1"
+    },
+    {
+      "id": "2",
+      "image": "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png",
+      "title": "Customer First Insights",
+      "content": "Sunway Pyramid",
+      "subtitle": "subtitle2"
+    },
+    {
+      "id": "3",
+      "image": "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png",
+      "title": "Data-driven technologies",
+      "content": "Bandar Puteri, Klang",
+      "subtitle": "subtitle3"
+    }
   ];
 
   export default {
-    name: "Industries",
+    name: "Career",
 
     components: {
       BModal,
-      'add-industries-article' : AddIndustriesArticle,
-      'update-industries-article': UpdateIndustriesArticle,
+      'add-career-article' : AddCareerArticle,
+      'update-career-article': UpdateCareerArticle,
       'text-editor': TextEditor
     },
 
@@ -139,14 +157,14 @@
           // Transition name
           name: 'flip-list'
         },
-        fields: [
+        fields2: [
           { key: 'id', label: 'Id', sortable: true, sortDirection: 'desc' },
           { key: 'image', label: 'Image', sortable: true, sortDirection: 'desc' },
           { key: 'title', label: 'Title', sortable: true, sortDirection: 'desc' },
           { key: 'content', label: 'Content', sortable: true, sortDirection: 'desc' },
           { key: 'actions', label: 'Actions' }
         ],
-        industriesInfo: { title: '', content: '', name: '' },
+        careerInfo: { title: '', content: '', name: '' },
         model: '',
         show: true,
         isEditing: false,
@@ -163,9 +181,9 @@
       },
 
       info(item, index, button) {
-        this.industriesInfo.title = `Row index: ${index}`
-        this.industriesInfo.content = JSON.stringify(item, null, 2)
-        this.$root.$emit('bv::show::modal', 'updateIndustries', button)
+        this.careerInfo.title = `Row index: ${index}`
+        this.careerInfo.content = JSON.stringify(item, null, 2)
+        this.$root.$emit('bv::show::modal', 'updateCareer', button)
 
         this.show = false
         this.$nextTick(() => {
@@ -174,8 +192,8 @@
       },
 
       resetModal() {
-        this.industriesInfo.title = ''
-        this.industriesInfo.content = ''
+        this.careerInfo.title = ''
+        this.careerInfo.content = ''
       },
 
       onReset(evt) {

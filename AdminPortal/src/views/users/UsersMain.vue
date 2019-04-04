@@ -40,7 +40,7 @@
             show-empty
             stacked="md"
             :items="items"
-            :fields="fields"
+            :fields="valfields"
             :current-page="currentPage"
             :per-page="perPage"
             :filter="filter"
@@ -138,7 +138,7 @@ export default {
         // Transition name
         name: 'flip-list'
       },
-      fields: [
+      valfields: [
         { key: 'id', label: 'id', sortable: true, sortDirection: 'desc' },
         { key: 'name', label: 'name', sortable: true, sortDirection: 'desc' },
         { key: 'email', label: 'email', sortable: true, sortDirection: 'desc' },
@@ -171,7 +171,7 @@ export default {
   computed: {
     sortOptions() {
       // Create an options list from our fields
-      return this.fields
+      return this.valfields
         .filter(f => f.sortable)
         .map(f => {
           return { text: f.label, value: f.key }
@@ -236,6 +236,7 @@ export default {
       this.getUsersList(this.nextPageUrl[this.nextPageUrl.length - 1])
     },
 
+    /*
     configPagination(data) {
       this.pagination.lastPage = data.last_page;
       this.pagination.currentPage = data.current_page;
@@ -246,6 +247,7 @@ export default {
       this.pagination.from = data.from;
       this.pagination.to = data.to;
     },
+    */
 
     delAlert(){
       this.$swal({

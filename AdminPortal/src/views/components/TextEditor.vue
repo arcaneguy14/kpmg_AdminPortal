@@ -94,7 +94,7 @@
         },
         isEditing: {
           type: Boolean,
-          default: ''
+          default: true
         }
       },
       data(){

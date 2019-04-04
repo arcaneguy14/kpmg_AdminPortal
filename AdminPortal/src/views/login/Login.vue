@@ -90,7 +90,7 @@
         .then(response => {
           if (response.data.respcode === 0)
           {
-            this.$router.replace({ name: "Dashboard" });
+            this.$router.replace({ name: "Users" });
           }
 
           if (response.data.respcode === 16)

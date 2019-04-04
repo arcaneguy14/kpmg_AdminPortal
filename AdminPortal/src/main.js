@@ -12,8 +12,12 @@ import router from './router'
 import VeeValidate from 'vee-validate'
 import VueSweetalert2 from 'vue-sweetalert2';
 
+const config = {
+  fieldsBagName: 'errorFields',
+};
+
 Vue.use(BootstrapVue)
-Vue.use(VeeValidate)
+Vue.use(VeeValidate, config)
 
 
 const options = {
