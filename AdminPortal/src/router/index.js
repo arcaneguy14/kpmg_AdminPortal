@@ -11,17 +11,17 @@ const Login = () => import('@/views/login/Login')
 
 // Users Management
 const UsersMain = () => import('@/views/users/UsersMain')
-const Dashboard = () => import('@/views/Dashboard')
-const EventHome = () => import('@/views/EventHome')
+//const Dashboard = () => import('@/views/Dashboard')
+//const EventHome = () => import('@/views/EventHome')
 const Featured = () => import('@/views/featured/Featured')
-const Navigation = () => import('@/views/navigation/Navigation')
+//const Navigation = () => import('@/views/navigation/Navigation')
 const Insights = () => import('@/views/insights/Insights')
 const Services = () => import('@/views/services/Services')
 const Industries = () => import('@/views/industries/Industries')
 const About = () => import('@/views/about/About')
 const Career = () => import('@/views/career/Career')
-const CareerJobs = () => import('@/views/career/CareerJobs')
-
+//const CareerJobs = () => import('@/views/career/CareerJobs')
+const Contact = () => import('@/views/contact/Contact')
 
 Vue.use(Router)
 
@@ -125,6 +125,13 @@ export default new Router({
           name: 'Career Article',
           beforeEnter: guard,
           component: Career
+        },
+
+        {
+          path: 'contact',
+          name: 'Contact',
+          beforeEnter: guard,
+          component: Contact
         },
 
         /*

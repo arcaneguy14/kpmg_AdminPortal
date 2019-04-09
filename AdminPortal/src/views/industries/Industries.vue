@@ -76,6 +76,7 @@
             >
               <template slot="actions" slot-scope="row">
                 <div class="table-action">
+                  <span @click="setFeatured"><i v-b-tooltip title="Set this article as Featured" class="fa fa-star"></i></span>
                   <span @click="info(row.item, row.index, $event.target)"><i v-b-tooltip title="Update Article" class="fa fa-edit"></i></span>
                   <span @click="removeArticle"><i v-b-tooltip title="Remove Article" class="fa fa-trash"></i></span>
                 </div>
@@ -200,6 +201,20 @@
           this.buttonID = 'edit'
         }
         //alert(JSON.stringify(this.form))
+      },
+
+      setFeatured(param){
+        // Use sweetalert2
+        this.$swal({
+          title: 'Set Article as Featured',
+          text: "Are you sure you want to set this as Featured?",
+          type: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, please!'
+        }).then((result) => {
+          if (result) {
+          }
+        })
       },
 
       removeArticle(param){

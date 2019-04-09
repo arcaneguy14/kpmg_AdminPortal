@@ -97,6 +97,12 @@ export default {
         }
       ]
       */
-    }
+    },
+
+    {
+      name : 'Contact',
+      url: '/kpmg/contact',
+      icon : 'fa fa-phone'
+    },
   ]
 }

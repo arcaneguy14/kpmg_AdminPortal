@@ -157,7 +157,7 @@
 
 <style scoped>
   .editor {
-    height: 275px;
+    height: 150px;
   }
 
   .ql-disabled{
