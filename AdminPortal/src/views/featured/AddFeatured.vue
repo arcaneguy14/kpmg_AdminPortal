@@ -74,7 +74,6 @@
             confirmButtonText: 'Yes, please!'
           }).then((result) => {
             if (result) {
-              this.genUserPass(1)
             }
           })
         }

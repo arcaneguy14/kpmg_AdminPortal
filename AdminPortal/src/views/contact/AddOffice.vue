@@ -90,11 +90,11 @@
 </template>
 
 <script>
-  import BRow from "bootstrap-vue/src/components/layout/row";
-  import BCol from "bootstrap-vue/src/components/layout/col";
+  //import BRow from "bootstrap-vue/src/components/layout/row";
+  //import BCol from "bootstrap-vue/src/components/layout/col";
   export default {
     name: "AddLocation",
-    components: {BCol, BRow},
+
     data() {
       return {
         form: {

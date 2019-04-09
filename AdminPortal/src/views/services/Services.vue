@@ -91,8 +91,8 @@
         </b-row>
         <b-row>
           <b-col md="6" class="my-1">
-            <b-button class="mr-2" variant="outline-primary" :disabled="clickable" v-on:click="prevButton"><i class="fa fa-arrow-left"></i> Previous</b-button>
-            <b-button variant="outline-primary" v-on:click="nextButton">Next <i class="fa fa-arrow-right"></i></b-button>
+            <b-button class="mr-2" variant="outline-primary"><i class="fa fa-arrow-left"></i> Previous</b-button>
+            <b-button variant="outline-primary">Next <i class="fa fa-arrow-right"></i></b-button>
           </b-col>
         </b-row>
       </b-card>
@@ -112,7 +112,7 @@
 </template>
 
 <script>
-  import BModal from "bootstrap-vue/src/components/modal/modal"
+  //import BModal from "bootstrap-vue/src/components/modal/modal"
   import TextEditor from '../components/TextEditor'
   import AddServicesArticle from "./AddServicesArticle"
   import UpdateServicesArticle from './UpdateServicesArticle'
@@ -127,7 +127,6 @@
     name: "Services",
 
     components: {
-      BModal,
       'add-services-article' : AddServicesArticle,
       'update-services-article': UpdateServicesArticle,
       'text-editor': TextEditor
@@ -147,7 +146,7 @@
           { key: 'content', label: 'Content', sortable: true, sortDirection: 'desc' },
           { key: 'actions', label: 'Actions' }
         ],
-        servicesInfo: { title: '', content: '', name: '' },
+        servicesInfo: { title: '', content: '{}', name: '' },
         model: '',
         show: true,
         isEditing: false,
@@ -176,7 +175,7 @@
 
       resetModal() {
         this.servicesInfo.title = ''
-        this.servicesInfo.content = ''
+        this.servicesInfo.content = '{}'
       },
 
       onReset(evt) {

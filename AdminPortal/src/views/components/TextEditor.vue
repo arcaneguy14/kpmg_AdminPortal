@@ -63,7 +63,7 @@
 <script>
   //import { VueEditor, Quill  } from 'vue2-editor'
   import Quill from 'quill'
-  import BButton from "bootstrap-vue/src/components/button/button";
+  //import BButton from "bootstrap-vue/src/components/button/button";
   /*
   const toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -86,7 +86,7 @@
 */
     export default {
       name: "TextEditor",
-      components: {BButton},
+
       props: {
         value: {
           type: String,

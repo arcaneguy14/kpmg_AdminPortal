@@ -23,6 +23,7 @@ const Career = () => import('@/views/career/Career')
 //const CareerJobs = () => import('@/views/career/CareerJobs')
 const Contact = () => import('@/views/contact/Contact')
 const Event = () => import('@/views/event/Event')
+const CMS = () => import('@/views/CMS')
 
 
 Vue.use(Router)
@@ -70,6 +71,13 @@ export default new Router({
           name: 'Users',
           beforeEnter: guard, // Using guard before entering the route
           component: UsersMain
+        },
+
+        {
+          path: 'cms',
+          name: 'CMS',
+          beforeEnter: guard, // Using guard before entering the route
+          component: CMS
         },
 
         /*

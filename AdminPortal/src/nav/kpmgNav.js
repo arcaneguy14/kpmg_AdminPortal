@@ -59,6 +59,7 @@ export default {
       url: '/kpmg/featured',
       icon : 'fa fa-star'
     },
+    /*
     {
       name : 'Insights',
       url: '/kpmg/insights',
@@ -79,11 +80,13 @@ export default {
       url: '/kpmg/about',
       icon : 'fa fa-question'
     },
+    */
+
+    /*
     {
       name : 'Career Article',
       url: '/kpmg/career_articles',
       icon : 'fa fa-newspaper-o',
-      /*
       children: [
         {
           name: 'Career Articles',
@@ -96,7 +99,13 @@ export default {
           icon: 'fa fa-suitcase'
         }
       ]
-      */
+    },
+*/
+
+    {
+      name : 'CMS',
+      url: '/kpmg/cms',
+      icon : 'fa fa-cog'
     },
 
     {
@@ -105,10 +114,12 @@ export default {
       icon : 'fa fa-phone'
     },
 
+    /*
     {
       name : 'Event',
       url: '/kpmg/event',
       icon : 'fa fa-calendar'
     },
+    */
   ]
 }

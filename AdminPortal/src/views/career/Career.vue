@@ -111,7 +111,7 @@
 </template>
 
 <script>
-  import BModal from "bootstrap-vue/src/components/modal/modal"
+  //import BModal from "bootstrap-vue/src/components/modal/modal"
   import TextEditor from '../components/TextEditor'
   import AddCareerArticle from "../career/AddCareerArticle"
   import UpdateCareerArticle from '../career/UpdateCareerArticle'
@@ -144,7 +144,6 @@
     name: "Career",
 
     components: {
-      BModal,
       'add-career-article' : AddCareerArticle,
       'update-career-article': UpdateCareerArticle,
       'text-editor': TextEditor
@@ -164,7 +163,7 @@
           { key: 'content', label: 'Content', sortable: true, sortDirection: 'desc' },
           { key: 'actions', label: 'Actions' }
         ],
-        careerInfo: { title: '', content: '', name: '' },
+        careerInfo: { title: '', content: '{}', name: '' },
         model: '',
         show: true,
         isEditing: false,
@@ -193,7 +192,7 @@
 
       resetModal() {
         this.careerInfo.title = ''
-        this.careerInfo.content = ''
+        this.careerInfo.content = '{}'
       },
 
       onReset(evt) {

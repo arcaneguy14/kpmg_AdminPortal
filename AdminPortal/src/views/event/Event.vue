@@ -111,7 +111,7 @@
 </template>
 
 <script>
-  import BModal from "bootstrap-vue/src/components/modal/modal"
+  //import BModal from "bootstrap-vue/src/components/modal/modal"
   import TextEditor from '../components/TextEditor'
   import AddEventArticle from "../event/AddEventArticle"
   import UpdateEventArticle from '../event/UpdateEventArticle'
@@ -144,7 +144,6 @@
     name: "Event",
 
     components: {
-      BModal,
       'add-event-article' : AddEventArticle,
       'update-event-article': UpdateEventArticle,
       'text-editor': TextEditor
@@ -164,7 +163,7 @@
           { key: 'content', label: 'Content', sortable: true, sortDirection: 'desc' },
           { key: 'actions', label: 'Actions' }
         ],
-        eventInfo: { title: '', content: '', name: '' },
+        eventInfo: { title: '', content: '{}', name: '' },
         model: '',
         show: true,
         isEditing: false,
@@ -193,7 +192,7 @@
 
       resetModal() {
         this.eventInfo.title = ''
-        this.eventInfo.content = ''
+        this.eventInfo.content = '{}'
       },
 
       onReset(evt) {

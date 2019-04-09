@@ -67,7 +67,7 @@
 <script>
   import AddLocation from './AddLocation'
   import UpdateLocation from './UpdateLocation'
-  import BModal from "bootstrap-vue/src/components/modal/modal";
+  //import BModal from "bootstrap-vue/src/components/modal/modal";
 
   let navi = [
     {id: '1', title: 'Location 1', address: 'Vertical Office, Bangsar South', lat: '32.3231312', long: '1.3123123123'},
@@ -78,7 +78,6 @@
         name: "Navigation",
 
       components: {
-        BModal,
         'add-location' : AddLocation,
         'update-location' : UpdateLocation
       },

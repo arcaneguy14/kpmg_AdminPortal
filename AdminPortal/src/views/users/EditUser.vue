@@ -7,7 +7,7 @@
             <b-form-group id="exampleInputGroup2" label="Your Name:" label-for="exampleInput2">
               <b-form-input
                 id="exampleInput2"
-                type=""
+                type="text"
                 :value="JSON.parse(modalInfo.content).name"
                 required
                 placeholder="Enter name" />
@@ -134,12 +134,11 @@
 </template>
 
 <script>
-  import BFormRadio from "bootstrap-vue/src/components/form-radio/form-radio";
-  import BRow from "bootstrap-vue/src/components/layout/row";
+  //import BFormRadio from "bootstrap-vue/src/components/form-radio/form-radio";
+  //import BRow from "bootstrap-vue/src/components/layout/row";
 
   export default {
     name: "EditUser",
-    components: {BRow, BFormRadio},
     props: ['modalInfo'],
 
     data() {
@@ -149,7 +148,7 @@
           name: '',
           address: '',
           country: null,
-          checked: [],
+          checked: '',
           pwd: '',
         },
         countries: [{ text: 'Select One', value: null },
@@ -167,7 +166,8 @@
     },
 
     updated(){
-      this.form.name = JSON.parse(this.modalInfo.content).name
+      //this.form.name = JSON.parse(this.modalInfo.content).name
+      //this.form.email = JSON.parse(this.modalInfo.content).email
     },
 
     methods: {
@@ -183,7 +183,7 @@
         this.form.address = ''
         this.form.pwd = ''
         this.form.country = null
-        this.form.checked = []
+        this.form.checked = ''
         /* Trick to reset/clear native browser form validation state */
         this.show = false
         this.$nextTick(() => {

@@ -20,8 +20,8 @@
 </template>
 
 <script>
-    import BCard from "bootstrap-vue/src/components/card/card";
-    import BCardFooter from "bootstrap-vue/src/components/card/card-footer";
+    //import BCard from "bootstrap-vue/src/components/card/card";
+    //import BCardFooter from "bootstrap-vue/src/components/card/card-footer";
     import FeaturedComp from "./FeaturedComp";
     import AddFeatured from "./AddFeatured"
 
@@ -33,7 +33,7 @@
 
     export default {
       name: "Featured",
-      components: {BCardFooter, BCard, FeaturedComp, AddFeatured},
+      components: {FeaturedComp, AddFeatured},
 
       data(){
         return{

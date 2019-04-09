@@ -76,7 +76,7 @@
 </template>
 
 <script>
-    import BRow from "bootstrap-vue/src/components/layout/row";
+    //import BRow from "bootstrap-vue/src/components/layout/row";
     import {ContainerMixin, ElementMixin} from 'vue-slicksort';
 
     const SortableList = {
@@ -141,12 +141,28 @@
             { value: '3', text: 'Industries' },
           ],
         }
+      },
+
+      methods: {
+        removeFeatured(param){
+          // Use sweetalert2
+          this.$swal({
+            title: 'Remove Featured Content',
+            text: "Are you sure you want to remove " +param+ " from Featured?",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, please!'
+          }).then((result) => {
+            if (result) {
+            }
+          })
+        },
       }
     };
 
     export default {
         name: "FeaturedComp",
-      components: {BRow,
+      components: {
         SortableItem,
         SortableList,
       },
@@ -180,20 +196,6 @@
       },
 
       methods: {
-        removeFeatured(param){
-          // Use sweetalert2
-          this.$swal({
-            title: 'Remove Featured Content',
-            text: "Are you sure you want to remove " +param+ " from Featured?",
-            type: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, please!'
-          }).then((result) => {
-            if (result) {
-            }
-          })
-        },
-
         info(item, index, button) {
           this.modalInfo.title = `Row index: ${index}`
           this.modalInfo.content = JSON.stringify(item, null, 2)

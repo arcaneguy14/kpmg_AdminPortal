@@ -76,14 +76,12 @@
 
 <script>
   import TextEditor from '../components/TextEditor'
-  import BCol from "bootstrap-vue/src/components/layout/col";
-  import BRow from "bootstrap-vue/src/components/layout/row";
+  //import BCol from "bootstrap-vue/src/components/layout/col";
+  //import BRow from "bootstrap-vue/src/components/layout/row";
 
   export default {
     name: "AddCareerArticle",
     components: {
-      BRow,
-      BCol,
       'text-editor': TextEditor
     },
     data() {

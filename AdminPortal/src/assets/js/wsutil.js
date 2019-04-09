@@ -120,7 +120,7 @@ export const wsutil = new Vuex.Store({
                 userUrl = '/api/v2/getUsers?limit=10'
               }
 
-              console.log(user.nextPage)
+              //console.log(user.nextPage)
                 axios.get(wsutil.state.apiBaseUrl + userUrl)
                 .then(response => {
                   context.commit('getUser', response);

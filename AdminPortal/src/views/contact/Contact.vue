@@ -117,8 +117,8 @@
         </b-row>
         <b-row>
           <b-col md="6" class="my-1">
-            <b-button class="mr-2" variant="outline-primary" :disabled="clickable" v-on:click="prevButton"><i class="fa fa-arrow-left"></i> Previous</b-button>
-            <b-button variant="outline-primary" v-on:click="nextButton">Next <i class="fa fa-arrow-right"></i></b-button>
+            <b-button class="mr-2" variant="outline-primary"><i class="fa fa-arrow-left"></i> Previous</b-button>
+            <b-button variant="outline-primary">Next <i class="fa fa-arrow-right"></i></b-button>
           </b-col>
         </b-row>
       </b-card>
@@ -135,7 +135,7 @@
 <script>
   import AddOffice from '../contact/AddOffice'
   import UpdateOffice from '../contact/UpdateOffice'
-  import BModal from "bootstrap-vue/src/components/modal/modal";
+  //import BModal from "bootstrap-vue/src/components/modal/modal";
   import TextEditor from '../components/TextEditor'
 
   let navi = [
@@ -147,7 +147,6 @@
     name: "Contact",
 
     components: {
-      BModal,
       'add-office' : AddOffice,
       'update-office' : UpdateOffice,
       'text-editor': TextEditor
@@ -168,7 +167,7 @@
           { key: 'address', label: 'Address', sortable: true, sortDirection: 'desc'},
           { key: 'actions', label: 'Actions' }
         ],
-        officeInfo: { title: '', content: '', name: '' },
+        officeInfo: { title: '', content: '{}', name: '' },
         filter: null,
         model: '',
         show: true,
@@ -195,7 +194,7 @@
 
       resetModal() {
         this.officeInfo.title = ''
-        this.officeInfo.content = ''
+        this.officeInfo.content = '{}'
       },
 
       removeLoc(param){

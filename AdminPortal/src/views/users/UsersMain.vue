@@ -118,13 +118,12 @@ import { VueEditor } from 'vue2-quill-editor';
 import AddUser from './AddUser'
 import  EditUser from './EditUser'
 import {HollowDotsSpinner  } from 'epic-spinners'
-import BCol from "bootstrap-vue/src/components/layout/col";
+//import BCol from "bootstrap-vue/src/components/layout/col";
 
 let items = []
 
 export default {
   components: {
-    BCol,
       VueEditor,
       'add-user': AddUser,
       'edit-user': EditUser,
@@ -158,7 +157,7 @@ export default {
       sortDesc: false,
       sortDirection: 'asc',
       filter: null,
-      modalInfo: { title: '', content: '', name: '' },
+      modalInfo: { title: '', content: '{}', name: '' },
       loading: false,
       flag: 0
     }
@@ -191,7 +190,7 @@ export default {
   methods: {
     info(item, index, button) {
       this.modalInfo.title = `Row index: ${index}`
-      this.modalInfo.content = JSON.stringify(item, null, 2)
+      this.modalInfo.content = JSON.stringify(item)
       this.$root.$emit('bv::show::modal', 'modalInfo', button)
     },
     add(button) {
@@ -199,7 +198,7 @@ export default {
     },
     resetModal() {
       this.modalInfo.title = ''
-      this.modalInfo.content = ''
+      this.modalInfo.content = '{}';
     },
     onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
@@ -209,7 +208,7 @@ export default {
 
     getUsersList(params) {
       this.loading = true
-      console.log(params)
+      //console.log(params)
       this.$store
         .dispatch("getUser", {
           nextPage: params,

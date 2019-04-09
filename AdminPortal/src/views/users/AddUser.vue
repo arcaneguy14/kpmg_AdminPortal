@@ -3,9 +3,8 @@
     <b-form-group inline id="exampleInputGroup" label="" label-for="exampleInput">
       <b-row>
         <b-col sm="6">
-          <b-form-group id="exampleInputGroup2" label="Your Name:" label-for="exampleInput2">
+          <b-form-group label="Your Name:">
             <b-form-input
-              id="exampleInput2"
               type="text"
               v-model="form.name"
               required
@@ -15,13 +14,10 @@
 
         <b-col sm="6">
           <b-form-group
-            id="exampleInputGroup1"
             label="Email address:"
-            label-for="exampleInput1"
             description="We'll never share your email with anyone else."
           >
             <b-form-input
-              id="exampleInput1"
               type="email"
               v-model="form.email"
               required
@@ -35,9 +31,7 @@
     <b-row>
       <b-col>
         <b-form-group
-          id="exampleInputGroup1"
           label="Address:"
-          label-for="exampleInput1"
         >
           <b-form-textarea
             id="textarea"
@@ -51,8 +45,8 @@
       </b-col>
 
       <b-col>
-        <b-form-group id="exampleInputGroup3" label="Nationality:" label-for="exampleInput3">
-          <b-form-select id="exampleInput3" :options="countries" required v-model="form.country" />
+        <b-form-group label="Nationality:">
+          <b-form-select :options="countries" required v-model="form.country" />
         </b-form-group>
       </b-col>
     </b-row>
@@ -71,12 +65,12 @@
 </template>
 
 <script>
-    import BRow from "bootstrap-vue/src/components/layout/row";
-    import BCol from "bootstrap-vue/src/components/layout/col";
-    import BFormRadio from "bootstrap-vue/src/components/form-radio/form-radio";
+    //import BRow from "bootstrap-vue/src/components/layout/row";
+    //import BCol from "bootstrap-vue/src/components/layout/col";
+    //import BFormRadio from "bootstrap-vue/src/components/form-radio/form-radio";
     export default {
         name: "AddUser",
-      components: {BFormRadio, BCol, BRow},
+
       data() {
           return {
             form: {
@@ -84,7 +78,7 @@
               name: '',
               address: '',
               country: null,
-              checked: [],
+              checked: '',
               pwd: ''
             },
             countries: [{ text: 'Select One', value: null },
@@ -96,7 +90,7 @@
       methods: {
         onSubmit(evt) {
           evt.preventDefault()
-          alert(JSON.stringify(this.form))
+          //alert(JSON.stringify(this.form))
         },
         onReset(evt) {
           evt.preventDefault()
@@ -106,7 +100,7 @@
           this.form.address = ''
           this.form.pwd = ''
           this.form.country = null
-          this.form.checked = []
+          this.form.checked = ''
           /* Trick to reset/clear native browser form validation state */
           this.show = false
           this.$nextTick(() => {
