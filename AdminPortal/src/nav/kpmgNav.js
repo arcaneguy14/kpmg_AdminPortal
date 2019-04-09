@@ -104,5 +104,11 @@ export default {
       url: '/kpmg/contact',
       icon : 'fa fa-phone'
     },
+
+    {
+      name : 'Event',
+      url: '/kpmg/event',
+      icon : 'fa fa-calendar'
+    },
   ]
 }

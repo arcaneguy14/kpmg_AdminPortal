@@ -22,6 +22,8 @@ const About = () => import('@/views/about/About')
 const Career = () => import('@/views/career/Career')
 //const CareerJobs = () => import('@/views/career/CareerJobs')
 const Contact = () => import('@/views/contact/Contact')
+const Event = () => import('@/views/event/Event')
+
 
 Vue.use(Router)
 
@@ -132,6 +134,13 @@ export default new Router({
           name: 'Contact',
           beforeEnter: guard,
           component: Contact
+        },
+
+        {
+          path: 'event',
+          name: 'Event',
+          beforeEnter: guard,
+          component: Event
         },
 
         /*
