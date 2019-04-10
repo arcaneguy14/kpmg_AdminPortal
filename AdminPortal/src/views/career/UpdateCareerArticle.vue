@@ -4,7 +4,7 @@
       <b-col md="4">
         <div class="avatar-upload">
           <div class="avatar-edit">
-            <input type='file' id="imageUpload" @change="previewImage(2)" accept="image/*"/>
+            <input type='file' id="imageUpload" @change="previewImage" accept="image/*"/>
             <label for="imageUpload"><i class="fa fa-pencil"></i></label>
           </div>
           <div class="avatar-preview" v-if="!form.image">
@@ -119,7 +119,7 @@
           reader.onload = (e) => {
             // Note: arrow function used here, so that "this.image" refers to the image of Vue component
             // Read image as base64 and set to image
-            if (img === 2)
+            //if (img === 2)
               this.form.image = e.target.result;
           }
           // Start the reader job - read file as a data url (base64 format)
