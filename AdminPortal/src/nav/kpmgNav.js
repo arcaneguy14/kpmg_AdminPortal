@@ -114,6 +114,12 @@ export default {
       icon : 'fa fa-phone'
     },
 
+    {
+      name : 'User Events',
+      url: '/kpmg/user-events',
+      icon : 'fa fa-users'
+    },
+
     /*
     {
       name : 'Event',

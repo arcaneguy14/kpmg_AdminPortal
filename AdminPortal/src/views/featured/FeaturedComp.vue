@@ -9,7 +9,7 @@
         </b-col>
         <b-col sm="8">
           <b-form-group>
-            <b-form-input type="text" id="city" placeholder="Search Title"></b-form-input>
+            <b-form-input type="text" placeholder="Search Title"></b-form-input>
           </b-form-group>
         </b-col>
         <b-col sm="2" class="d-flex justify-content-end">

@@ -36,6 +36,9 @@
                   required
                   placeholder="Add Subtitle" />
               </b-form-group>
+              <b-form-group id="exampleInputGroup2" label="Event Date:">
+                <datepicker v-model="form.date" name="event-date" bootstrap-styling calendar-button clear-button placeholder="Insert Date" calendar-button-icon="fa fa-calendar"></datepicker>
+              </b-form-group>
             </b-col>
           </b-row>
         </b-form-group>
@@ -78,11 +81,13 @@
 
 <script>
   import TextEditor from '../components/TextEditor'
+  import Datepicker from 'vuejs-datepicker';
 
   export default {
     name: "AddEventArticle",
     components: {
-      'text-editor': TextEditor
+      'text-editor': TextEditor,
+      Datepicker
     },
     data() {
       return {
@@ -92,6 +97,7 @@
           content: '',
           subtitle: '',
           pwd: '',
+          date: ''
         },
         show: true,
         model: '',
@@ -172,6 +178,8 @@
 </script>
 
 <style lang="scss">
+  @import "../../assets/scss/variables";
+
   .avatar-upload {
     position: relative;
     //max-width: 205px;
@@ -235,5 +243,16 @@
         object-fit: cover;
       }
     }
+  }
+
+  .vdp-datepicker{
+    .form-control{
+      background-color: white !important;
+    }
+  }
+
+  .vdp-datepicker__calendar .cell.selected{
+    background: $kpmgblue;
+    color: white;
   }
 </style>
