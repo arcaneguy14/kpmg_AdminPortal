@@ -47,6 +47,12 @@
               </b-table>
           </b-col>
         </b-row>
+        <b-row>
+          <b-col md="6" class="my-1">
+            <b-button class="mr-2" variant="outline-primary"><i class="fa fa-arrow-left"></i> Previous</b-button>
+            <b-button variant="outline-primary">Next <i class="fa fa-arrow-right"></i></b-button>
+          </b-col>
+        </b-row>
       </b-card>
     </b-col>
   </b-row>
@@ -54,7 +60,6 @@
 
 <script>
   import VueCsvDownloader from 'vue-csv-downloader';
-  import BButton from "bootstrap-vue/src/components/button/button";
 
   let content = [
     {id: '1', user: 'Khal Drogo', eventName: 'Building Financial Freedom', eventDate: '10/4/2019' },
@@ -68,7 +73,6 @@
       name: "UserEvents",
 
       components: {
-        BButton,
         VueCsvDownloader
       },
 

@@ -25,6 +25,7 @@ const Contact = () => import('@/views/contact/Contact')
 const Event = () => import('@/views/event/Event')
 const CMS = () => import('@/views/CMS')
 const UserEvents = () => import('@/views/event/UserEvents')
+const Tax = () => import('@/views/tax/Tax')
 
 
 Vue.use(Router)
@@ -157,6 +158,13 @@ export default new Router({
           name: 'User Events',
           beforeEnter: guard,
           component: UserEvents
+        },
+
+        {
+          path: 'tax',
+          name: 'Tax Calculator Data',
+          beforeEnter: guard,
+          component: Tax
         },
 
         /*

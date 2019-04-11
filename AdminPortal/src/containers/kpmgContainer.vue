@@ -233,6 +233,17 @@ export default {
     color: darkred;
   }
 
+  .fa-clipboard{
+    color: $kpmgblue;
+    cursor: pointer;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+
+  .fa-clipboard:hover{
+    color: $kpmghoverblue;
+  }
+
   span{
     padding-right: 5px;
   }

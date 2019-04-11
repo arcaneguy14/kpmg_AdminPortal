@@ -120,6 +120,12 @@ export default {
       icon : 'fa fa-users'
     },
 
+    {
+      name : 'Tax Calculator Data',
+      url: '/kpmg/tax',
+      icon : 'fa fa-calculator'
+    },
+
     /*
     {
       name : 'Event',
