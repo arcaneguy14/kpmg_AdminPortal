@@ -1,6 +1,14 @@
 <template>
   <b-row>
     <b-col>
+      <b-row>
+        <b-col>
+          <p>Personal Information Consent</p>
+        </b-col>
+        <b-col>
+          <p>Yes</p>
+        </b-col>
+      </b-row>
       <h3>Income</h3>
       <b-row>
         <b-col>
@@ -106,14 +114,6 @@
         </b-col>
         <b-col>
           <p>3000</p>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <p>Personal Information Consent</p>
-        </b-col>
-        <b-col>
-          <p>Yes</p>
         </b-col>
       </b-row>
     </b-col>

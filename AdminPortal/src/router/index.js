@@ -59,11 +59,21 @@ export default new Router({
     {
       path: '/',
       name: 'Login',
-      component: Login
+      beforeEnter: async (to, from, next) => {
+        if (wsutil.getters.getJwt) {
+          next('/kpmg/users')
+        }
+
+        else{
+          next()
+        }
+      },
+      component: Login,
     },
+
     {
       path: '/kpmg',
-      name: 'Kpmg Mode Home',
+      name: '',
       redirect: '/kpmg/users',
       beforeEnter: guard, // Using guard before entering the route
       component: kpmgContainer,
@@ -175,7 +185,7 @@ export default new Router({
           component: CareerJobs
         }
         */
-      ]
+      ],
     },
     /*
     {
