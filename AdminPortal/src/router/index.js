@@ -174,7 +174,7 @@ export default new Router({
           path: 'tax',
           name: 'Tax Calculator Data',
           beforeEnter: guard,
-          component: Tax
+          component: Tax,
         },
 
         /*

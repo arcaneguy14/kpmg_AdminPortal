@@ -28,6 +28,25 @@
 
       <b-row>
 
+        <!--
+        <b-col sm="6">
+          <b-list-group v-for="(feature, index) in filterPage" @mouseover="showByIndex = feature.id"
+                        @mouseleave="showByIndex = null" :class="{ active: hover }">
+            <b-list-group-item href="#" class="flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{feature.title}}</h5>
+                <small>3 days ago</small>
+              </div>
+
+              <p class="mb-1">
+                {{feature.name}}
+              </p>
+
+              <small>Category: {{options[feature.category].text}} | Posted By: Anon</small>
+            </b-list-group-item>
+          </b-list-group>
+        </b-col>
+        -->
         <SortableList lockAxis="y" v-model="featured">
           <SortableItem v-for="(feature, index) in filterPage" :index="index" :key="feature.id" :item="feature"/>
         </SortableList>
@@ -95,36 +114,26 @@
     <!-- <b-card class="featured-card card-button">{{item.id}}</b-card> -->
 
 
-          <b-card class="featured-card card-button" @mouseover="showByIndex = item.id"
-                  @mouseleave="showByIndex = null" :class="{ active: hover }" :title="item.title">
-            <b-row>
-              <b-col md="4">
-                <b-img sm thumbnail fluid :src="item.image" class="rounded-0" style="width: 125px;" />
-              </b-col>
-              <b-col md="8">
-                <b-card-text>
-                    {{item.name}}
-                </b-card-text>
-              </b-col>
-            </b-row>
-            <div slot="footer">
-              <b-row>
-                <b-col md="6">
-                  <small class="text-muted">Posted by: Anon</small>
-                  <small> | </small>
-                  <small class="text-muted">Created On: 26/3/2019</small>
-                </b-col>
-                <b-col md="6" class="text-right">
-                  <small class="text-muted">Category: {{options[item.category].text}}</small>
-                </b-col>
-              </b-row>
-            </div>
+          <b-list-group @mouseover="showByIndex = item.id"
+                  @mouseleave="showByIndex = null" :class="{ active: hover }">
+            <b-list-group-item href="#" class="flex-column align-items-start">
             <transition name="fade">
               <div class="s-link" v-if="showByIndex == item.id">
                 <b-button type="button" variant="primary" @click="removeFeatured(item.title)">Remove from Featured</b-button>
               </div>
             </transition>
-          </b-card>
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{item.title}}</h5>
+                  <small>3 days ago</small>
+                </div>
+
+                <p class="mb-1">
+                  {{item.name}}
+                </p>
+
+                <small>Category: {{options[item.category].text}} | Posted By: Anon</small>
+              </b-list-group-item>
+          </b-list-group>
 
 
 

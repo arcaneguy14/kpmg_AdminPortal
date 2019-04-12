@@ -248,4 +248,8 @@ export default {
     padding-right: 5px;
   }
 }
+
+  select{
+    cursor: pointer;
+  }
 </style>

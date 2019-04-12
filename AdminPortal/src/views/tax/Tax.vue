@@ -25,6 +25,11 @@
         </b-row>
         <b-row>
           <b-col>
+            <b-button variant="primary" @click="add($event.target)"><i class="fa fa-calculator"></i> Update Tax Formula</b-button>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
             <b-table striped hover
                      :items="content"
                      responsive
@@ -55,6 +60,9 @@
           <b-tab title="Input Detail"><tax-input :taxInfo="taxInfo"></tax-input></b-tab>
         </b-tabs>
       </b-modal>
+      <b-modal id="taxFormula" size="md" title="Tax Formula" hide-footer scrollable>
+        <tax-formula></tax-formula>
+      </b-modal>
     </b-col>
   </b-row>
 </template>
@@ -62,6 +70,7 @@
 <script>
   import TaxSummary from './TaxSummary'
   import TaxInputDetail from './TaxInputDetail'
+  import TaxFormula from './TaxFormula'
 
   let content = [
     {id: '1', user: 'Khal Drogo', eventName: 'Building Financial Freedom', eventDate: '10/4/2019', summary: {gross: '110,000', family: '2300', epf: '6000', medical: '3000', other: '1500', taxable: '84,000', tax: '4500'} },
@@ -76,7 +85,8 @@
 
     components: {
       'tax-info': TaxSummary,
-      'tax-input': TaxInputDetail
+      'tax-input': TaxInputDetail,
+      'tax-formula': TaxFormula
     },
 
     data(){
@@ -110,6 +120,10 @@
         this.$nextTick(() => {
           this.show = true
         })
+      },
+
+      add(button) {
+        this.$root.$emit('bv::show::modal', 'taxFormula', button)
       },
     }
   }
