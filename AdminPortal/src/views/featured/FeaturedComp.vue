@@ -25,7 +25,11 @@
             </b-form-group>
           </b-col>
       </b-row>
-
+      <b-row>
+        <b-col>
+          <p><small><i>You may drag and drop the below to choose the order in which Featured Contents appear</i></small></p>
+        </b-col>
+      </b-row>
       <b-row>
 
         <!--

@@ -252,4 +252,8 @@ export default {
   select{
     cursor: pointer;
   }
+
+  table#table-transition-example .flip-list-move {
+    transition: transform 1s;
+  }
 </style>

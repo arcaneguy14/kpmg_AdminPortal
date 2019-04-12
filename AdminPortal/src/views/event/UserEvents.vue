@@ -41,8 +41,9 @@
                        :fields="fields"
                        primary-key="id"
                        :filter="filter"
-                       id="table-transition1"
                        class="mt-3"
+                       id="table-transition-example"
+                       :tbody-transition-props="transProps"
               >
               </b-table>
           </b-col>
@@ -79,6 +80,10 @@
       data(){
         return{
           content: content,
+          transProps: {
+            // Transition name
+            name: 'flip-list'
+          },
           fields: [
             { key: 'id', label: 'Id', sortable: true, sortDirection: 'desc'},
             { key: 'user', label: 'Participant Name', sortable: true, sortDirection: 'desc' },

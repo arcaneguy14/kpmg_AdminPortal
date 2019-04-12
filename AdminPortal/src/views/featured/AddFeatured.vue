@@ -21,6 +21,9 @@
              :items="features"
              responsive
              :fields="fields"
+             primary-key="id"
+             id="table-transition-example"
+             :tbody-transition-props="transProps"
     >
       <template slot="actions" slot-scope="row">
         <b-button size="sm" variant="success" class="mr-1" @click="showAlert">
@@ -47,6 +50,10 @@
 
       data(){
           return{
+            transProps: {
+              // Transition name
+              name: 'flip-list'
+            },
             fields: [
               { key: 'id', label: 'Id', sortable: true, sortDirection: 'desc' },
               { key: 'title', label: 'Title', sortable: true, sortDirection: 'desc' },
@@ -59,7 +66,7 @@
               { value: '2', text: 'Services' },
               { value: '3', text: 'Industries' },
             ],
-            selected: null
+            selected: null,
           }
       },
 
@@ -81,6 +88,5 @@
     }
 </script>
 
-<style scoped>
-
+<style>
 </style>
