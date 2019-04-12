@@ -26,8 +26,6 @@
         </b-col>
       </b-row>
     </b-form-group>
-
-
     <b-row>
       <b-col>
         <b-form-group

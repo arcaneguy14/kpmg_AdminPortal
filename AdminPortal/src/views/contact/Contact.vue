@@ -263,10 +263,12 @@
 
 <style scoped>
 .contact-email{
+  transition: all .2s ease-in-out;
   background: grey;
   opacity: .6;
 }
   .contact-email.active{
+    transition: all .2s ease-in-out;
     background: white;
     opacity: unset;
   }

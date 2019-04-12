@@ -14,7 +14,7 @@
       <b-row class="justify-content-center">
         <b-col md="8">
 
-          <transition appear name="fade">
+          <transition appear name="slide-fade">
             <b-card-group>
               <b-card no-body class="py-5 hide-mobile">
                 <b-card-body class="text-center">
@@ -47,7 +47,7 @@
                     </b-input-group>
                     <b-row>
                       <b-col cols="12">
-                        <b-button type="submit" block variant="primary" class="px-4">Login</b-button>
+                        <b-button type="submit" block variant="primary" class="px-4">Login   <b-spinner v-if="loading" variant="light" label="Spinning" small></b-spinner></b-button>
                       </b-col>
                     </b-row>
                   </b-form>
@@ -154,6 +154,20 @@
     transition: opacity .5s;
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+
+
+
+  .slide-fade-enter-active {
+    transition: all 1s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(20px);
     opacity: 0;
   }
 </style>

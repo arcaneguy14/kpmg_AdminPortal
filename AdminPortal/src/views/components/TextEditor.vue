@@ -158,10 +158,12 @@
 <style scoped>
   .editor {
     height: 150px;
+    transition: all .2s ease-in-out;
   }
 
   .ql-disabled{
     background: grey;
     opacity: .6;
+    transition: all .2s ease-in-out;
   }
 </style>
