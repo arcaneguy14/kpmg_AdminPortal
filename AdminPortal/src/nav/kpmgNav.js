@@ -1,6 +1,5 @@
 export default {
   items: [
-    /*
     {
       title: true,
       name: 'Switch Mode',
@@ -16,7 +15,6 @@ export default {
       class: 'small',
       icon: 'fa fa-arrow-left'
     },
-    */
     {
       title: true,
       name: 'Base',
@@ -38,13 +36,11 @@ export default {
       url: '/kpmg/users',
       icon : 'fa fa-user-circle-o'
     },
-    /*
     {
       name : 'Navigation',
       url: '/kpmg/navigation',
       icon : 'fa fa-compass'
     },
-    */
     {
       title: true,
       name: 'KPMG APP',

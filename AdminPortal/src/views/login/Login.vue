@@ -14,8 +14,8 @@
       <b-row class="justify-content-center">
         <b-col md="8">
 
-          <transition appear name="slide-fade">
             <b-card-group>
+              <transition appear name="slide-fade2">
               <b-card no-body class="py-5 hide-mobile">
                 <b-card-body class="text-center">
                   <b-row class="justify-content-center">
@@ -24,6 +24,8 @@
                   </b-row>
                 </b-card-body>
               </b-card>
+              </transition>
+              <transition appear name="slide-fade">
               <b-card no-body class="p-4">
                 <b-card-body>
                   <b-form action="#" @submit.prevent="validateBeforeSubmit">
@@ -53,8 +55,8 @@
                   </b-form>
                 </b-card-body>
               </b-card>
+              </transition>
             </b-card-group>
-          </transition>
         </b-col>
       </b-row>
     </div>
@@ -167,7 +169,20 @@
   }
   .slide-fade-enter, .slide-fade-leave-to
     /* .slide-fade-leave-active below version 2.1.8 */ {
-    transform: translateX(20px);
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+
+  .slide-fade2-enter-active {
+    transition: all 1s ease;
+  }
+  .slide-fade2-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade2-enter, .slide-fade2-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(-100px);
     opacity: 0;
   }
 </style>

@@ -54,7 +54,9 @@
         <SortableList lockAxis="y" v-model="featured">
           <SortableItem v-for="(feature, index) in filterPage" :index="index" :key="feature.id" :item="feature"/>
         </SortableList>
-
+        <b-col>
+          <b-button type="button" @click="saveOrder" variant="primary" class="mt-3">Save Order</b-button>
+        </b-col>
         <!--
         <b-col sm="12" v-for="feature in filterPage" :key="feature.id">
           <b-card class="featured-card card-button" @mouseover="showByIndex = feature.id"
@@ -141,6 +143,7 @@
 
 
 
+
   `,
 
       data(){
@@ -216,6 +219,20 @@
         },
         add(button) {
           this.$root.$emit('bv::show::modal', 'addFeatured', button)
+        },
+
+        saveOrder(param){
+          // Use sweetalert2
+          this.$swal({
+            title: 'Featured Order',
+            text: "Are you sure you want to save this order?",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, please!'
+          }).then((result) => {
+            if (result) {
+            }
+          })
         },
       }
     }

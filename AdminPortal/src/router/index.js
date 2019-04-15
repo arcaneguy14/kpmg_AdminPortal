@@ -12,9 +12,9 @@ const Login = () => import('@/views/login/Login')
 // Users Management
 const UsersMain = () => import('@/views/users/UsersMain')
 //const Dashboard = () => import('@/views/Dashboard')
-//const EventHome = () => import('@/views/EventHome')
+const EventHome = () => import('@/views/EventHome')
 const Featured = () => import('@/views/featured/Featured')
-//const Navigation = () => import('@/views/navigation/Navigation')
+const Navigation = () => import('@/views/navigation/Navigation')
 const Insights = () => import('@/views/insights/Insights')
 const Services = () => import('@/views/services/Services')
 const Industries = () => import('@/views/industries/Industries')
@@ -99,14 +99,14 @@ export default new Router({
           beforeEnter: guard, // Using guard before entering the route
           component: Dashboard
         },
-
+        */
         {
           path: 'navigation',
           name: 'Navigation',
           beforeEnter: guard, // Using guard before entering the route
           component: Navigation
         },
-        */
+
         {
           path: 'featured',
           name: 'Featured',
@@ -187,7 +187,6 @@ export default new Router({
         */
       ],
     },
-    /*
     {
       path: '/event',
       name: 'Event Mode Home',
@@ -201,6 +200,5 @@ export default new Router({
         }
       ]
     }
-    */
   ]
 })

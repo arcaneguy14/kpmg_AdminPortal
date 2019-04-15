@@ -49,8 +49,8 @@
               </b-row>
           <b-row>
             <b-col md="6" class="my-1">
-              <b-button class="mr-2" variant="outline-primary" :disabled="clickable" v-on:click="prevButton"><i class="fa fa-arrow-left"></i> Previous</b-button>
-              <b-button variant="outline-primary" v-on:click="nextButton">Next <i class="fa fa-arrow-right"></i></b-button>
+              <b-button class="mr-2" variant="outline-primary"><i class="fa fa-arrow-left"></i> Previous</b-button>
+              <b-button variant="outline-primary">Next <i class="fa fa-arrow-right"></i></b-button>
             </b-col>
           </b-row>
         </b-card>
@@ -97,7 +97,7 @@
               { key: 'address', label: 'Address', sortable: true, sortDirection: 'desc'},
               { key: 'actions', label: 'Actions' }
             ],
-            locationInfo: { title: '', content: '', name: '' },
+            locationInfo: { title: '', content: '{}', name: '' },
             filter: null
           }
       },
@@ -115,7 +115,7 @@
 
         resetModal() {
           this.locationInfo.title = ''
-          this.locationInfo.content = ''
+          this.locationInfo.content = '{}'
         },
 
         removeLoc(param){

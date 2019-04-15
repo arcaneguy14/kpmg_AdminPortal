@@ -1,4 +1,3 @@
-/*
 export default {
   items: [
     {
@@ -12,7 +11,7 @@ export default {
     },
     {
       name : 'Switch to KPMG Mode',
-      url: '/kpmg/dashboard',
+      url: '/kpmg/users',
       class: 'small',
       icon: 'fa fa-arrow-left'
     },
@@ -37,4 +36,3 @@ export default {
     },
   ]
 }
-*/
