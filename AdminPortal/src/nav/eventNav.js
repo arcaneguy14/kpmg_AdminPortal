@@ -26,12 +26,7 @@ export default {
     },
     {
       name : 'Event',
-      url: '/main/events',
-      icon : 'cui-layers'
-    },
-    {
-      name : 'Event Feeds',
-      url: '/main/events_feeds',
+      url: '/event/event-home',
       icon : 'cui-layers'
     },
   ]

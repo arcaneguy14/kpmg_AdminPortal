@@ -19,7 +19,6 @@ const config = {
 Vue.use(BootstrapVue)
 Vue.use(VeeValidate, config)
 
-
 const options = {
   confirmButtonColor: '#00519A',
   cancelButtonColor: '#ff7674'

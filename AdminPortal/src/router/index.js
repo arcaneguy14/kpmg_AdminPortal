@@ -26,6 +26,7 @@ const Event = () => import('@/views/event/Event')
 const CMS = () => import('@/views/CMS')
 const UserEvents = () => import('@/views/event/UserEvents')
 const Tax = () => import('@/views/tax/Tax')
+const EventManagement = () => import('@/views/event_management/EventManagement')
 
 
 Vue.use(Router)
@@ -189,14 +190,15 @@ export default new Router({
     },
     {
       path: '/event',
-      name: 'Event Mode Home',
+      name: '',
+      redirect: '/event/event-home',
       component: eventContainer,
       children: [
         {
           path: 'event-home',
           name: 'Event Home',
           beforeEnter: guard, // Using guard before entering the route
-          component: EventHome
+          component: EventManagement
         }
       ]
     }

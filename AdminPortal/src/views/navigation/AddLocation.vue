@@ -2,9 +2,8 @@
   <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="modalInfo">
     <b-row>
       <b-col sm="12">
-        <b-form-group id="exampleInputGroup3" label="Title:" label-for="exampleInput3">
+        <b-form-group label="Title:">
           <b-form-input
-            id="exampleInput2"
             type="text"
             v-model="form.title"
             required
@@ -12,12 +11,11 @@
         </b-form-group>
       </b-col>
     </b-row>
-    <b-form-group inline id="exampleInputGroup" label="" label-for="exampleInput">
+    <b-form-group inline label="">
       <b-row>
         <b-col sm="6">
-          <b-form-group id="exampleInputGroup2" label="Latitude:" label-for="exampleInput2">
+          <b-form-group label="Latitude:">
             <b-form-input
-              id="exampleInput2"
               type="text"
               v-model="form.lat"
               required
@@ -27,12 +25,9 @@
 
         <b-col sm="6">
           <b-form-group
-            id="exampleInputGroup1"
             label="Longitude:"
-            label-for="exampleInput1"
           >
             <b-form-input
-              id="exampleInput1"
               type="text"
               v-model="form.long"
               required
@@ -46,9 +41,7 @@
     <b-row>
       <b-col>
         <b-form-group
-          id="exampleInputGroup1"
           label="Address:"
-          label-for="exampleInput1"
         >
           <b-form-textarea
             id="textarea"
