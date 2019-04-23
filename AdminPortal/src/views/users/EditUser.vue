@@ -4,9 +4,8 @@
       <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="modalInfo">
         <b-row>
           <b-col sm="6">
-            <b-form-group id="exampleInputGroup2" label="Your Name:" label-for="exampleInput2">
+            <b-form-group label="Your Name:">
               <b-form-input
-                id="exampleInput2"
                 type="text"
                 :value="JSON.parse(modalInfo.content).name"
                 required
@@ -16,13 +15,10 @@
 
           <b-col sm="6">
             <b-form-group
-              id="exampleInputGroup1"
               label="Email address:"
-              label-for="exampleInput1"
               description="We'll never share your email with anyone else."
             >
               <b-form-input
-                id="exampleInput1"
                 type="email"
                 :value="JSON.parse(modalInfo.content).email"
                 required
@@ -33,11 +29,7 @@
 
         <b-row>
           <b-col>
-            <b-form-group
-              id="exampleInputGroup1"
-              label="Address:"
-              label-for="exampleInput1"
-            >
+            <b-form-group label="Address:">
               <b-form-textarea
                 id="textarea"
                 v-model="form.address"
@@ -49,16 +41,16 @@
             </b-form-group>
           </b-col>
           <b-col>
-            <b-form-group id="exampleInputGroup3" label="Nationality:" label-for="exampleInput3">
-              <b-form-select id="exampleInput3" :options="countries" required v-model="form.country" />
+            <b-form-group label="Nationality:">
+              <b-form-select :options="countries" required v-model="form.country" />
             </b-form-group>
           </b-col>
         </b-row>
 
         <b-row>
           <b-col>
-            <b-form-group id="exampleGroup4" label="Gender">
-              <b-form-radio-group v-model="form.checked" id="exampleChecks">
+            <b-form-group label="Gender">
+              <b-form-radio-group v-model="form.checked">
                 <b-form-radio value="m">Male</b-form-radio>
                 <b-form-radio value="f">Female</b-form-radio>
               </b-form-radio-group>
@@ -66,11 +58,10 @@
           </b-col>
         </b-row>
 
-        <b-form-group id="genPwd" label="" label-for="genPass">
+        <b-form-group label="">
           <b-row>
             <b-col>
               <b-form-input
-                id="genPass"
                 type="text"
                 v-model="form.pwd"
                 required
@@ -165,10 +156,10 @@
       }
     },
 
-    updated(){
+   // updated(){
       //this.form.name = JSON.parse(this.modalInfo.content).name
       //this.form.email = JSON.parse(this.modalInfo.content).email
-    },
+    //},
 
     methods: {
       onSubmit(evt) {

@@ -2,12 +2,11 @@
   <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="modalInfo">
     <b-row class="mb-3">
       <b-col md="12">
-        <b-form-group inline id="exampleInputGroup" label="" label-for="exampleInput">
+        <b-form-group inline label="">
           <b-row>
             <b-col sm="6">
-              <b-form-group id="exampleInputGroup2" label="Job Title:" label-for="exampleInput2">
+              <b-form-group label="Job Title:">
                 <b-form-input
-                  id="exampleInput2"
                   type="text"
                   v-model="form.title"
                   required
@@ -16,9 +15,8 @@
             </b-col>
 
             <b-col md="6">
-              <b-form-group id="exampleInputGroup2" label="Job Function:" label-for="exampleInput3">
+              <b-form-group label="Job Function:">
                 <b-form-input
-                  id="exampleInput3"
                   type="text"
                   v-model="form.jobFunction"
                   required
@@ -34,7 +32,6 @@
 
               <b-form-group label="Job Ref:">
                 <b-form-input
-                  id="exampleInput3"
                   type="text"
                   v-model="form.subtitle"
                   required

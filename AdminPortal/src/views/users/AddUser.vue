@@ -1,6 +1,6 @@
 <template>
   <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="modalInfo">
-    <b-form-group inline id="exampleInputGroup" label="" label-for="exampleInput">
+    <b-form-group inline label="">
       <b-row>
         <b-col sm="6">
           <b-form-group label="Your Name:">
@@ -50,8 +50,8 @@
     </b-row>
 
 
-    <b-form-group id="exampleGroup4" label="Gender:">
-      <b-form-radio-group v-model="form.checked" id="exampleChecks">
+    <b-form-group label="Gender:">
+      <b-form-radio-group v-model="form.checked">
         <b-form-radio value="m">Male</b-form-radio>
         <b-form-radio value="f">Female</b-form-radio>
       </b-form-radio-group>

@@ -2,11 +2,7 @@
   <b-form @submit="onSubmit" @reset="onReset" v-if="show" id="addInsightsMainText">
     <b-row>
       <b-col>
-        <b-form-group
-          id="exampleInputGroup1"
-          label="Content:"
-          label-for="exampleInput1"
-        >
+        <b-form-group label="Content:">
           <text-editor v-model="model"></text-editor>
         </b-form-group>
       </b-col>
